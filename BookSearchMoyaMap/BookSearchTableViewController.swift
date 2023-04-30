@@ -10,21 +10,17 @@ import UIKit
 import Moya
 
 class BookSearchTableViewController: UITableViewController, UISearchBarDelegate {
-
+    
+    private let emptyCellId = "emptyTableViewCell"
+    
     //一冊の本（ひとつのアイテム）の情報を格納する変数
     private var bookDataArray = [VolumeInfo]()
     
-    private lazy var emptyView: UIView = {
-        let view = UIView()
-        view.isHidden = true
-        return view
-    }()
-    
-    private var emptyImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.isHidden = true
-        return imageView
-    }()
+    private var isBookListAvailable: Bool {
+        get {
+            return !self.bookDataArray.isEmpty
+        }
+    }
     
     //キャッシュ画像を保存するための変数
     var imageCache = NSCache<AnyObject, UIImage>()
@@ -32,16 +28,18 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(emptyView)
-        self.view.addSubview(emptyImageView)
-        
-        self.tableView.rowHeight = 120
+        self.tableView.register(EmptyTableViewCell.self, forCellReuseIdentifier: emptyCellId)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
     }
     
     //検索ボタンが押されたときの処理
@@ -108,11 +106,31 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return bookDataArray.count
+        
+        if self.isBookListAvailable {
+            return self.bookDataArray.count
+        } else {
+            return 1
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.isBookListAvailable {
+            return 120
+        } else {
+            return self.tableView.bounds.size.height
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        guard self.isBookListAvailable else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: emptyCellId) as? EmptyTableViewCell {
+                return cell
+            }
             return UITableViewCell()
         }
 

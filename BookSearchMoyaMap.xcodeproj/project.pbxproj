@@ -27,6 +27,7 @@
 		B77EBADC24654D4B00A6CD05 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADB24654D4B00A6CD05 /* WebViewController.swift */; };
 		B77EBADE246552FD00A6CD05 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADD246552FD00A6CD05 /* StoreTableViewCell.swift */; };
 		B77EBAE024655E9000A6CD05 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADF24655E9000A6CD05 /* StoreTableViewController.swift */; };
+		B7F8183429FE97D700220003 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8183329FE97D700220003 /* EmptyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		B77EBADB24654D4B00A6CD05 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B77EBADD246552FD00A6CD05 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		B77EBADF24655E9000A6CD05 /* StoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
+		B7F8183329FE97D700220003 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		E1335D07DD773D5A320C0235 /* Pods-BookSearchMoyaMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMap.release.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMap/Pods-BookSearchMoyaMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,6 +172,7 @@
 				B77EBADB24654D4B00A6CD05 /* WebViewController.swift */,
 				B77EBAD92465294900A6CD05 /* GbaData.swift */,
 				B77EBAD72465064400A6CD05 /* ItemTableViewCell.swift */,
+				B7F8183329FE97D700220003 /* EmptyTableViewCell.swift */,
 				B77EBAD12464F81300A6CD05 /* StoreSearchViewController.swift */,
 				B77EBAAA2464F4F600A6CD05 /* Assets.xcassets */,
 				B77EBAAC2464F4F600A6CD05 /* LaunchScreen.storyboard */,
@@ -440,6 +443,7 @@
 				B77EBAD22464F81300A6CD05 /* StoreSearchViewController.swift in Sources */,
 				B77EBAD62464FE1F00A6CD05 /* BooksDataStorage.swift in Sources */,
 				B77EBAE024655E9000A6CD05 /* StoreTableViewController.swift in Sources */,
+				B7F8183429FE97D700220003 /* EmptyTableViewCell.swift in Sources */,
 				B77EBAA62464F4D900A6CD05 /* ViewController.swift in Sources */,
 				B77EBADA2465294900A6CD05 /* GbaData.swift in Sources */,
 				B77EBAA22464F4D900A6CD05 /* AppDelegate.swift in Sources */,
