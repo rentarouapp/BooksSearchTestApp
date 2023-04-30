@@ -12,13 +12,28 @@ import Moya
 class BookSearchTableViewController: UITableViewController, UISearchBarDelegate {
 
     //一冊の本（ひとつのアイテム）の情報を格納する変数
-    var bookDataArray = [VolumeInfo]()
+    private var bookDataArray = [VolumeInfo]()
+    
+    private lazy var emptyView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        return view
+    }()
+    
+    private var emptyImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.isHidden = true
+        return imageView
+    }()
     
     //キャッシュ画像を保存するための変数
     var imageCache = NSCache<AnyObject, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(emptyView)
+        self.view.addSubview(emptyImageView)
         
         self.tableView.rowHeight = 120
 
