@@ -1,0 +1,785 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		086E864A979574F26BD15281 /* Pods_BookSearchMoyaMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2F14D8350FD60B4D76DDD9D /* Pods_BookSearchMoyaMap.framework */; };
+		18C7D3D12466B084003F2211 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C7D3D02466B084003F2211 /* WebKit.framework */; };
+		4532662BF1FE632FA25D2D6D /* Pods_BookSearchMoyaMap_BookSearchMoyaMapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3666C558057B2DEC1279ACD2 /* Pods_BookSearchMoyaMap_BookSearchMoyaMapUITests.framework */; };
+		60F2A9944554325339DC3488 /* Pods_BookSearchMoyaMapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78609B4DCEA9083D2BFB4F94 /* Pods_BookSearchMoyaMapTests.framework */; };
+		B77EBAA22464F4D900A6CD05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAA12464F4D900A6CD05 /* AppDelegate.swift */; };
+		B77EBAA42464F4D900A6CD05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAA32464F4D900A6CD05 /* SceneDelegate.swift */; };
+		B77EBAA62464F4D900A6CD05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAA52464F4D900A6CD05 /* ViewController.swift */; };
+		B77EBAA92464F4D900A6CD05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B77EBAA72464F4D900A6CD05 /* Main.storyboard */; };
+		B77EBAAB2464F4F600A6CD05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B77EBAAA2464F4F600A6CD05 /* Assets.xcassets */; };
+		B77EBAAE2464F4F600A6CD05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B77EBAAC2464F4F600A6CD05 /* LaunchScreen.storyboard */; };
+		B77EBAB92464F4F600A6CD05 /* BookSearchMoyaMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAB82464F4F600A6CD05 /* BookSearchMoyaMapTests.swift */; };
+		B77EBAC42464F4F600A6CD05 /* BookSearchMoyaMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAC32464F4F600A6CD05 /* BookSearchMoyaMapUITests.swift */; };
+		B77EBAD22464F81300A6CD05 /* StoreSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAD12464F81300A6CD05 /* StoreSearchViewController.swift */; };
+		B77EBAD42464FA5100A6CD05 /* BookSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAD32464FA5100A6CD05 /* BookSearchTableViewController.swift */; };
+		B77EBAD62464FE1F00A6CD05 /* BooksDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAD52464FE1F00A6CD05 /* BooksDataStorage.swift */; };
+		B77EBAD82465064400A6CD05 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAD72465064400A6CD05 /* ItemTableViewCell.swift */; };
+		B77EBADA2465294900A6CD05 /* GbaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBAD92465294900A6CD05 /* GbaData.swift */; };
+		B77EBADC24654D4B00A6CD05 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADB24654D4B00A6CD05 /* WebViewController.swift */; };
+		B77EBADE246552FD00A6CD05 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADD246552FD00A6CD05 /* StoreTableViewCell.swift */; };
+		B77EBAE024655E9000A6CD05 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADF24655E9000A6CD05 /* StoreTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B77EBAB52464F4F600A6CD05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B77EBA962464F4D900A6CD05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B77EBA9D2464F4D900A6CD05;
+			remoteInfo = BookSearchMoyaMap;
+		};
+		B77EBAC02464F4F600A6CD05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B77EBA962464F4D900A6CD05 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B77EBA9D2464F4D900A6CD05;
+			remoteInfo = BookSearchMoyaMap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		18C7D3D02466B084003F2211 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		3666C558057B2DEC1279ACD2 /* Pods_BookSearchMoyaMap_BookSearchMoyaMapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookSearchMoyaMap_BookSearchMoyaMapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38F0394158F81362841C70C8 /* Pods-BookSearchMoyaMapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMapTests.release.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMapTests/Pods-BookSearchMoyaMapTests.release.xcconfig"; sourceTree = "<group>"; };
+		47DFCE1631A53C962965AF7E /* Pods-BookSearchMoyaMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMap.debug.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMap/Pods-BookSearchMoyaMap.debug.xcconfig"; sourceTree = "<group>"; };
+		54C3EC4D22CEF07790A4961F /* Pods-BookSearchMoyaMapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMapTests.debug.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMapTests/Pods-BookSearchMoyaMapTests.debug.xcconfig"; sourceTree = "<group>"; };
+		78609B4DCEA9083D2BFB4F94 /* Pods_BookSearchMoyaMapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookSearchMoyaMapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83A5D31363DBA0E56EB4BC79 /* Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.release.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B2F14D8350FD60B4D76DDD9D /* Pods_BookSearchMoyaMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookSearchMoyaMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6C60CD004546EDEF6E21475 /* Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.debug.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B77EBA9E2464F4D900A6CD05 /* BookSearchMoyaMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookSearchMoyaMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B77EBAA12464F4D900A6CD05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B77EBAA32464F4D900A6CD05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B77EBAA52464F4D900A6CD05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B77EBAA82464F4D900A6CD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B77EBAAA2464F4F600A6CD05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B77EBAAD2464F4F600A6CD05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B77EBAAF2464F4F600A6CD05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B77EBAB42464F4F600A6CD05 /* BookSearchMoyaMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookSearchMoyaMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B77EBAB82464F4F600A6CD05 /* BookSearchMoyaMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchMoyaMapTests.swift; sourceTree = "<group>"; };
+		B77EBABA2464F4F600A6CD05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B77EBABF2464F4F600A6CD05 /* BookSearchMoyaMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookSearchMoyaMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B77EBAC32464F4F600A6CD05 /* BookSearchMoyaMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchMoyaMapUITests.swift; sourceTree = "<group>"; };
+		B77EBAC52464F4F600A6CD05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B77EBAD12464F81300A6CD05 /* StoreSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSearchViewController.swift; sourceTree = "<group>"; };
+		B77EBAD32464FA5100A6CD05 /* BookSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchTableViewController.swift; sourceTree = "<group>"; };
+		B77EBAD52464FE1F00A6CD05 /* BooksDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksDataStorage.swift; sourceTree = "<group>"; };
+		B77EBAD72465064400A6CD05 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		B77EBAD92465294900A6CD05 /* GbaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GbaData.swift; sourceTree = "<group>"; };
+		B77EBADB24654D4B00A6CD05 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		B77EBADD246552FD00A6CD05 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
+		B77EBADF24655E9000A6CD05 /* StoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
+		E1335D07DD773D5A320C0235 /* Pods-BookSearchMoyaMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMap.release.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMap/Pods-BookSearchMoyaMap.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B77EBA9B2464F4D900A6CD05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18C7D3D12466B084003F2211 /* WebKit.framework in Frameworks */,
+				086E864A979574F26BD15281 /* Pods_BookSearchMoyaMap.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B77EBAB12464F4F600A6CD05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60F2A9944554325339DC3488 /* Pods_BookSearchMoyaMapTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B77EBABC2464F4F600A6CD05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4532662BF1FE632FA25D2D6D /* Pods_BookSearchMoyaMap_BookSearchMoyaMapUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1FBB1A7056EACA51383AA785 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47DFCE1631A53C962965AF7E /* Pods-BookSearchMoyaMap.debug.xcconfig */,
+				E1335D07DD773D5A320C0235 /* Pods-BookSearchMoyaMap.release.xcconfig */,
+				B6C60CD004546EDEF6E21475 /* Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.debug.xcconfig */,
+				83A5D31363DBA0E56EB4BC79 /* Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.release.xcconfig */,
+				54C3EC4D22CEF07790A4961F /* Pods-BookSearchMoyaMapTests.debug.xcconfig */,
+				38F0394158F81362841C70C8 /* Pods-BookSearchMoyaMapTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9131962BC17CD4A6EB58BC19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18C7D3D02466B084003F2211 /* WebKit.framework */,
+				B2F14D8350FD60B4D76DDD9D /* Pods_BookSearchMoyaMap.framework */,
+				3666C558057B2DEC1279ACD2 /* Pods_BookSearchMoyaMap_BookSearchMoyaMapUITests.framework */,
+				78609B4DCEA9083D2BFB4F94 /* Pods_BookSearchMoyaMapTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B77EBA952464F4D900A6CD05 = {
+			isa = PBXGroup;
+			children = (
+				B77EBAA02464F4D900A6CD05 /* BookSearchMoyaMap */,
+				B77EBAB72464F4F600A6CD05 /* BookSearchMoyaMapTests */,
+				B77EBAC22464F4F600A6CD05 /* BookSearchMoyaMapUITests */,
+				B77EBA9F2464F4D900A6CD05 /* Products */,
+				1FBB1A7056EACA51383AA785 /* Pods */,
+				9131962BC17CD4A6EB58BC19 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B77EBA9F2464F4D900A6CD05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B77EBA9E2464F4D900A6CD05 /* BookSearchMoyaMap.app */,
+				B77EBAB42464F4F600A6CD05 /* BookSearchMoyaMapTests.xctest */,
+				B77EBABF2464F4F600A6CD05 /* BookSearchMoyaMapUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B77EBAA02464F4D900A6CD05 /* BookSearchMoyaMap */ = {
+			isa = PBXGroup;
+			children = (
+				B77EBAA12464F4D900A6CD05 /* AppDelegate.swift */,
+				B77EBAA32464F4D900A6CD05 /* SceneDelegate.swift */,
+				B77EBAA52464F4D900A6CD05 /* ViewController.swift */,
+				B77EBAA72464F4D900A6CD05 /* Main.storyboard */,
+				B77EBADD246552FD00A6CD05 /* StoreTableViewCell.swift */,
+				B77EBAD52464FE1F00A6CD05 /* BooksDataStorage.swift */,
+				B77EBAD32464FA5100A6CD05 /* BookSearchTableViewController.swift */,
+				B77EBADF24655E9000A6CD05 /* StoreTableViewController.swift */,
+				B77EBADB24654D4B00A6CD05 /* WebViewController.swift */,
+				B77EBAD92465294900A6CD05 /* GbaData.swift */,
+				B77EBAD72465064400A6CD05 /* ItemTableViewCell.swift */,
+				B77EBAD12464F81300A6CD05 /* StoreSearchViewController.swift */,
+				B77EBAAA2464F4F600A6CD05 /* Assets.xcassets */,
+				B77EBAAC2464F4F600A6CD05 /* LaunchScreen.storyboard */,
+				B77EBAAF2464F4F600A6CD05 /* Info.plist */,
+			);
+			path = BookSearchMoyaMap;
+			sourceTree = "<group>";
+		};
+		B77EBAB72464F4F600A6CD05 /* BookSearchMoyaMapTests */ = {
+			isa = PBXGroup;
+			children = (
+				B77EBAB82464F4F600A6CD05 /* BookSearchMoyaMapTests.swift */,
+				B77EBABA2464F4F600A6CD05 /* Info.plist */,
+			);
+			path = BookSearchMoyaMapTests;
+			sourceTree = "<group>";
+		};
+		B77EBAC22464F4F600A6CD05 /* BookSearchMoyaMapUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B77EBAC32464F4F600A6CD05 /* BookSearchMoyaMapUITests.swift */,
+				B77EBAC52464F4F600A6CD05 /* Info.plist */,
+			);
+			path = BookSearchMoyaMapUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B77EBA9D2464F4D900A6CD05 /* BookSearchMoyaMap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B77EBAC82464F4F600A6CD05 /* Build configuration list for PBXNativeTarget "BookSearchMoyaMap" */;
+			buildPhases = (
+				12E7A52FFD63667CF3A2B2BC /* [CP] Check Pods Manifest.lock */,
+				B77EBA9A2464F4D900A6CD05 /* Sources */,
+				B77EBA9B2464F4D900A6CD05 /* Frameworks */,
+				B77EBA9C2464F4D900A6CD05 /* Resources */,
+				1F878F6361511361BF557228 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BookSearchMoyaMap;
+			productName = BookSearchMoyaMap;
+			productReference = B77EBA9E2464F4D900A6CD05 /* BookSearchMoyaMap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B77EBAB32464F4F600A6CD05 /* BookSearchMoyaMapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B77EBACB2464F4F600A6CD05 /* Build configuration list for PBXNativeTarget "BookSearchMoyaMapTests" */;
+			buildPhases = (
+				9FC2E523A4A14F1E5FD2BDE3 /* [CP] Check Pods Manifest.lock */,
+				B77EBAB02464F4F600A6CD05 /* Sources */,
+				B77EBAB12464F4F600A6CD05 /* Frameworks */,
+				B77EBAB22464F4F600A6CD05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B77EBAB62464F4F600A6CD05 /* PBXTargetDependency */,
+			);
+			name = BookSearchMoyaMapTests;
+			productName = BookSearchMoyaMapTests;
+			productReference = B77EBAB42464F4F600A6CD05 /* BookSearchMoyaMapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B77EBABE2464F4F600A6CD05 /* BookSearchMoyaMapUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B77EBACE2464F4F600A6CD05 /* Build configuration list for PBXNativeTarget "BookSearchMoyaMapUITests" */;
+			buildPhases = (
+				5BDBE56EAAFB9C410337426F /* [CP] Check Pods Manifest.lock */,
+				B77EBABB2464F4F600A6CD05 /* Sources */,
+				B77EBABC2464F4F600A6CD05 /* Frameworks */,
+				B77EBABD2464F4F600A6CD05 /* Resources */,
+				E39455401829E88C31442BA4 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B77EBAC12464F4F600A6CD05 /* PBXTargetDependency */,
+			);
+			name = BookSearchMoyaMapUITests;
+			productName = BookSearchMoyaMapUITests;
+			productReference = B77EBABF2464F4F600A6CD05 /* BookSearchMoyaMapUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B77EBA962464F4D900A6CD05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = uejo;
+				TargetAttributes = {
+					B77EBA9D2464F4D900A6CD05 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					B77EBAB32464F4F600A6CD05 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = B77EBA9D2464F4D900A6CD05;
+					};
+					B77EBABE2464F4F600A6CD05 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = B77EBA9D2464F4D900A6CD05;
+					};
+				};
+			};
+			buildConfigurationList = B77EBA992464F4D900A6CD05 /* Build configuration list for PBXProject "BookSearchMoyaMap" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B77EBA952464F4D900A6CD05;
+			productRefGroup = B77EBA9F2464F4D900A6CD05 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B77EBA9D2464F4D900A6CD05 /* BookSearchMoyaMap */,
+				B77EBAB32464F4F600A6CD05 /* BookSearchMoyaMapTests */,
+				B77EBABE2464F4F600A6CD05 /* BookSearchMoyaMapUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B77EBA9C2464F4D900A6CD05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B77EBAAE2464F4F600A6CD05 /* LaunchScreen.storyboard in Resources */,
+				B77EBAAB2464F4F600A6CD05 /* Assets.xcassets in Resources */,
+				B77EBAA92464F4D900A6CD05 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B77EBAB22464F4F600A6CD05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B77EBABD2464F4F600A6CD05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12E7A52FFD63667CF3A2B2BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BookSearchMoyaMap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1F878F6361511361BF557228 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookSearchMoyaMap/Pods-BookSearchMoyaMap-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookSearchMoyaMap/Pods-BookSearchMoyaMap-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BookSearchMoyaMap/Pods-BookSearchMoyaMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BDBE56EAAFB9C410337426F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FC2E523A4A14F1E5FD2BDE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BookSearchMoyaMapTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E39455401829E88C31442BA4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests/Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B77EBA9A2464F4D900A6CD05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B77EBAD42464FA5100A6CD05 /* BookSearchTableViewController.swift in Sources */,
+				B77EBADC24654D4B00A6CD05 /* WebViewController.swift in Sources */,
+				B77EBAD22464F81300A6CD05 /* StoreSearchViewController.swift in Sources */,
+				B77EBAD62464FE1F00A6CD05 /* BooksDataStorage.swift in Sources */,
+				B77EBAE024655E9000A6CD05 /* StoreTableViewController.swift in Sources */,
+				B77EBAA62464F4D900A6CD05 /* ViewController.swift in Sources */,
+				B77EBADA2465294900A6CD05 /* GbaData.swift in Sources */,
+				B77EBAA22464F4D900A6CD05 /* AppDelegate.swift in Sources */,
+				B77EBAD82465064400A6CD05 /* ItemTableViewCell.swift in Sources */,
+				B77EBAA42464F4D900A6CD05 /* SceneDelegate.swift in Sources */,
+				B77EBADE246552FD00A6CD05 /* StoreTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B77EBAB02464F4F600A6CD05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B77EBAB92464F4F600A6CD05 /* BookSearchMoyaMapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B77EBABB2464F4F600A6CD05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B77EBAC42464F4F600A6CD05 /* BookSearchMoyaMapUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B77EBAB62464F4F600A6CD05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B77EBA9D2464F4D900A6CD05 /* BookSearchMoyaMap */;
+			targetProxy = B77EBAB52464F4F600A6CD05 /* PBXContainerItemProxy */;
+		};
+		B77EBAC12464F4F600A6CD05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B77EBA9D2464F4D900A6CD05 /* BookSearchMoyaMap */;
+			targetProxy = B77EBAC02464F4F600A6CD05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B77EBAA72464F4D900A6CD05 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B77EBAA82464F4D900A6CD05 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B77EBAAC2464F4F600A6CD05 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B77EBAAD2464F4F600A6CD05 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B77EBAC62464F4F600A6CD05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B77EBAC72464F4F600A6CD05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B77EBAC92464F4F600A6CD05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47DFCE1631A53C962965AF7E /* Pods-BookSearchMoyaMap.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RC344KPBS;
+				INFOPLIST_FILE = BookSearchMoyaMap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rentarou1994.BookSearchMoyaMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B77EBACA2464F4F600A6CD05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1335D07DD773D5A320C0235 /* Pods-BookSearchMoyaMap.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RC344KPBS;
+				INFOPLIST_FILE = BookSearchMoyaMap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rentarou1994.BookSearchMoyaMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B77EBACC2464F4F600A6CD05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54C3EC4D22CEF07790A4961F /* Pods-BookSearchMoyaMapTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RC344KPBS;
+				INFOPLIST_FILE = BookSearchMoyaMapTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rentarou1994.BookSearchMoyaMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookSearchMoyaMap.app/BookSearchMoyaMap";
+			};
+			name = Debug;
+		};
+		B77EBACD2464F4F600A6CD05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38F0394158F81362841C70C8 /* Pods-BookSearchMoyaMapTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RC344KPBS;
+				INFOPLIST_FILE = BookSearchMoyaMapTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rentarou1994.BookSearchMoyaMapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BookSearchMoyaMap.app/BookSearchMoyaMap";
+			};
+			name = Release;
+		};
+		B77EBACF2464F4F600A6CD05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6C60CD004546EDEF6E21475 /* Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RC344KPBS;
+				INFOPLIST_FILE = BookSearchMoyaMapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rentarou1994.BookSearchMoyaMapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BookSearchMoyaMap;
+			};
+			name = Debug;
+		};
+		B77EBAD02464F4F600A6CD05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83A5D31363DBA0E56EB4BC79 /* Pods-BookSearchMoyaMap-BookSearchMoyaMapUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2RC344KPBS;
+				INFOPLIST_FILE = BookSearchMoyaMapUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rentarou1994.BookSearchMoyaMapUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BookSearchMoyaMap;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B77EBA992464F4D900A6CD05 /* Build configuration list for PBXProject "BookSearchMoyaMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B77EBAC62464F4F600A6CD05 /* Debug */,
+				B77EBAC72464F4F600A6CD05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B77EBAC82464F4F600A6CD05 /* Build configuration list for PBXNativeTarget "BookSearchMoyaMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B77EBAC92464F4F600A6CD05 /* Debug */,
+				B77EBACA2464F4F600A6CD05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B77EBACB2464F4F600A6CD05 /* Build configuration list for PBXNativeTarget "BookSearchMoyaMapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B77EBACC2464F4F600A6CD05 /* Debug */,
+				B77EBACD2464F4F600A6CD05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B77EBACE2464F4F600A6CD05 /* Build configuration list for PBXNativeTarget "BookSearchMoyaMapUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B77EBACF2464F4F600A6CD05 /* Debug */,
+				B77EBAD02464F4F600A6CD05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B77EBA962464F4D900A6CD05 /* Project object */;
+}
