@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 
-class BookSearchTableViewController: UITableViewController, UISearchBarDelegate {
+class BookSearchTableViewController: UITableViewController {
     
     private let emptyCellId = "emptyTableViewCell"
     
@@ -22,79 +22,19 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
         }
     }
     
+    private var moyaProviders: [Cancellable] = []
+    
     //キャッシュ画像を保存するための変数
     var imageCache = NSCache<AnyObject, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.register(EmptyTableViewCell.self, forCellReuseIdentifier: emptyCellId)
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
-    }
-    
-    //検索ボタンが押されたときの処理
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //入力文字の有無をチェック
-        guard let inputText = searchBar.text else {
-            //入力文字なし
-            return
-        }
-        
-        //0文字よりも多かった場合
-        guard inputText.lengthOfBytes(using: String.Encoding.utf8) > 0 else {
-            //0文字よりも多くなかった場合
-            return
-        }
-        
-        //現時点で保持している本のデータを一旦全て削除
-        bookDataArray.removeAll()
-        
-        let provider = MoyaProvider<GbaData>()
-        provider.request(.search(request: ["q":"\(inputText)", "maxResults":"12"])) {
-            result in
-            switch result {
-            //通信が成功したときの処理
-            case let .success(moyaResponse):
-                
-                //decodeメソッドを呼び出す
-                let jsonData = try? JSONDecoder().decode(TotalItems.self, from: moyaResponse.data)
-                
-                //※この「dump」は変数の中身を出力してくれる関数
-                //dump(jsonData!)
-                
-                //オブジェクトの存在を確認してから商品のリストに追加
-                for count in 0...11 {
-                    if jsonData!.items![count].volumeInfo != nil {
-                    self.bookDataArray.append(jsonData!.items![count].volumeInfo!)
-                    } else {
-                        print("要素が入っていないぜ")
-                        break
-                    }
-                }
-                
-            //通信が失敗したときの処理
-            case let .failure(error):
-                print("アクセスに失敗しました:\(error)")
-            }
-            
-            //ビューの描画をメインスレッドで行わすための処理
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            
-            //キーボードを閉じる
-            searchBar.resignFirstResponder()
-        }
+        //self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -123,14 +63,17 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemTableViewCell else {
+        
+        if self.bookDataArray.count == 0 {
+            if let emptyCell = tableView.dequeueReusableCell(withIdentifier: emptyCellId) as? EmptyTableViewCell {
+                self.tableView.isScrollEnabled = false
+                return emptyCell
+            }
             return UITableViewCell()
         }
         
-        guard self.isBookListAvailable else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: emptyCellId) as? EmptyTableViewCell {
-                return cell
-            }
+        self.tableView.isScrollEnabled = true
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemTableViewCell else {
             return UITableViewCell()
         }
 
@@ -215,53 +158,73 @@ class BookSearchTableViewController: UITableViewController, UISearchBarDelegate 
                 webViewConrtoller.bookUrl = cell.bookUrl
             }
         }
+    }
+    
+    // MARK: - Common
+    func resumeSearch(searchBar: UISearchBar, text: String?) {
+        //現時点で保持している本のデータを一旦全て削除
+        self.bookDataArray.removeAll()
+        //入力文字の有無をチェック
+        guard let inputText = searchBar.text, inputText.count > 0 else {
+            //入力文字なし
+            self.moyaProviders.forEach({ $0.cancel() })
+            self.moyaProviders.removeAll()
+            self.bookDataArray.removeAll()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            return
+        }
         
-        
+        let provider = MoyaProvider<GbaData>()
+        let request = provider.request(.search(request: ["q":"\(inputText)", "maxResults":"12"])) {
+            result in
+            switch result {
+            //通信が成功したときの処理
+            case let .success(moyaResponse):
+                //decodeメソッドを呼び出す
+                let jsonData = try? JSONDecoder().decode(TotalItems.self, from: moyaResponse.data)
+                //オブジェクトの存在を確認してから商品のリストに追加
+                if let _items = jsonData?.items {
+                    for item in _items {
+                        if let _volumeInfo = item.volumeInfo {
+                            self.bookDataArray.append(_volumeInfo)
+                        }
+                    }
+                }
+                
+            //通信が失敗したときの処理
+            case let .failure(error):
+                print("アクセスに失敗しました:\(error)")
+            }
+            
+            //ビューの描画をメインスレッドで行わすための処理
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            //キーボードを閉じる
+            //searchBar.resignFirstResponder()
+        }
+        self.moyaProviders.append(request)
     }
+    
+    
+}
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+extension BookSearchTableViewController: UISearchBarDelegate {
+    
+    // 入力中
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.resumeSearch(searchBar: searchBar, text: searchText)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    // キャンセルボタン
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.resumeSearch(searchBar: searchBar, text: nil)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    //検索ボタンが押されたときの処理
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.resumeSearch(searchBar: searchBar, text: searchBar.text)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
