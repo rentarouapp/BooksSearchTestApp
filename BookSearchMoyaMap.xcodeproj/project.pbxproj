@@ -27,6 +27,7 @@
 		B77EBADC24654D4B00A6CD05 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADB24654D4B00A6CD05 /* WebViewController.swift */; };
 		B77EBADE246552FD00A6CD05 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADD246552FD00A6CD05 /* StoreTableViewCell.swift */; };
 		B77EBAE024655E9000A6CD05 /* StoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77EBADF24655E9000A6CD05 /* StoreTableViewController.swift */; };
+		B79B67152A04A81D00C1836C /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B67142A04A81D00C1836C /* BookSearchViewController.swift */; };
 		B7F8183429FE97D700220003 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8183329FE97D700220003 /* EmptyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		B77EBADB24654D4B00A6CD05 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B77EBADD246552FD00A6CD05 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		B77EBADF24655E9000A6CD05 /* StoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewController.swift; sourceTree = "<group>"; };
+		B79B67142A04A81D00C1836C /* BookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewController.swift; sourceTree = "<group>"; };
 		B7F8183329FE97D700220003 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		E1335D07DD773D5A320C0235 /* Pods-BookSearchMoyaMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMap.release.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMap/Pods-BookSearchMoyaMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +170,7 @@
 				B77EBADD246552FD00A6CD05 /* StoreTableViewCell.swift */,
 				B77EBAD52464FE1F00A6CD05 /* BooksDataStorage.swift */,
 				B77EBAD32464FA5100A6CD05 /* BookSearchTableViewController.swift */,
+				B79B67142A04A81D00C1836C /* BookSearchViewController.swift */,
 				B77EBADF24655E9000A6CD05 /* StoreTableViewController.swift */,
 				B77EBADB24654D4B00A6CD05 /* WebViewController.swift */,
 				B77EBAD92465294900A6CD05 /* GbaData.swift */,
@@ -448,6 +451,7 @@
 				B77EBADA2465294900A6CD05 /* GbaData.swift in Sources */,
 				B77EBAA22464F4D900A6CD05 /* AppDelegate.swift in Sources */,
 				B77EBAD82465064400A6CD05 /* ItemTableViewCell.swift in Sources */,
+				B79B67152A04A81D00C1836C /* BookSearchViewController.swift in Sources */,
 				B77EBAA42464F4D900A6CD05 /* SceneDelegate.swift in Sources */,
 				B77EBADE246552FD00A6CD05 /* StoreTableViewCell.swift in Sources */,
 			);
