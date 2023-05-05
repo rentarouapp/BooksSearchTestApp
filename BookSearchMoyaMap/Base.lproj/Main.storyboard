@@ -90,6 +90,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="o2C-L7-gad"/>
+                    <connections>
+                        <outlet property="searchBar" destination="pnd-dQ-upD" id="eLF-kU-9ux"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMC-AW-IXc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

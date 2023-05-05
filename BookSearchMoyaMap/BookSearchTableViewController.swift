@@ -13,6 +13,9 @@ class BookSearchTableViewController: UITableViewController {
     
     private let emptyCellId = "emptyTableViewCell"
     
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     //一冊の本（ひとつのアイテム）の情報を格納する変数
     private var bookDataArray = [VolumeInfo]()
     
@@ -24,17 +27,36 @@ class BookSearchTableViewController: UITableViewController {
     
     private var moyaProviders: [Cancellable] = []
     
+    private lazy var toolBar: UIToolbar = {
+        let toolBar = UIToolbar()
+        //完了ボタンを作成
+        let doneButton = UIBarButtonItem(title: "完了",
+                                   style: .done,
+                                   target: self,
+                                   action: #selector(didTapDoneButton))
+        toolBar.items = [doneButton]
+        toolBar.sizeToFit()
+        return toolBar
+    }()
+    
     //キャッシュ画像を保存するための変数
     var imageCache = NSCache<AnyObject, UIImage>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.searchBar.searchTextField.inputAccessoryView = self.toolBar
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //self.tableView.reloadData()
+    }
+    
+    // MARK: - Common
+    @objc func didTapDoneButton(_ sender: UIButton) {
+        self.resignFirstResponder()
     }
 
     // MARK: - Table view data source
