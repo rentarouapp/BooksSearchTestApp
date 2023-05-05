@@ -13,7 +13,6 @@ class BookSearchTableViewController: UITableViewController {
     
     private let emptyCellId = "emptyTableViewCell"
     
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     //一冊の本（ひとつのアイテム）の情報を格納する変数
@@ -56,7 +55,7 @@ class BookSearchTableViewController: UITableViewController {
     
     // MARK: - Common
     @objc func didTapDoneButton(_ sender: UIButton) {
-        self.resignFirstResponder()
+        self.searchBar.searchTextField.resignFirstResponder()
     }
 
     // MARK: - Table view data source
