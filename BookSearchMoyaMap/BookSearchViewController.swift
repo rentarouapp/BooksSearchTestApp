@@ -28,8 +28,21 @@ class BookSearchViewController: UIViewController {
     
     private lazy var emptyView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
+        view.addSubview(self.emptyImageView)
+        self.emptyImageView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview().inset(80)
+            make.height.width.equalTo(self.view.bounds.size.width-(80*2))
+            make.centerY.equalToSuperview()
+        }
         return view
+    }()
+    
+    private let emptyImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "empty-books")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     private lazy var toolBar: UIToolbar = {
@@ -119,18 +132,12 @@ class BookSearchViewController: UIViewController {
             }
             
             if self.bookDataArray.isEmpty {
-                self.tableView.isHidden = true
                 self.emptyView.isHidden = false
-            } else {
-                self.tableView.isHidden = false
-                self.emptyView.isHidden = true
-                //ビューの描画をメインスレッドで行わすための処理
-                DispatchQueue.main.async { [weak self] in
-                    guard let `self` = self else { return }
-                    self.tableView.reloadData()
-                }
             }
-            
+            DispatchQueue.main.async { [weak self] in
+                guard let `self` = self else { return }
+                self.tableView.reloadData()
+            }
         }
         self.moyaProviders.append(request)
     }
@@ -143,12 +150,10 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.bookDataArray.count
     }
     
