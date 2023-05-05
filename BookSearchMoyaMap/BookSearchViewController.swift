@@ -26,23 +26,19 @@ class BookSearchViewController: UIViewController {
     
     private var moyaProviders: [Cancellable] = []
     
-    private lazy var emptyView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.addSubview(self.emptyImageView)
-        self.emptyImageView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(80)
-            make.height.width.equalTo(self.view.bounds.size.width-(80*2))
-            make.centerY.equalToSuperview()
+    private var emptyText: String {
+        get {
+            if let text = self.searchBar.text, text.count > 0 {
+                return "「\(text)」での検索結果はありませんでした。"
+            }
+            return "本を探せるよ！"
         }
-        return view
-    }()
+    }
     
-    private let emptyImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "empty-books")
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    private lazy var emptyView: EmptyView = {
+        let view = EmptyView()
+        view.textLabel.text = self.emptyText
+        return view
     }()
     
     private lazy var toolBar: UIToolbar = {
@@ -110,8 +106,8 @@ class BookSearchViewController: UIViewController {
         }
         
         let provider = MoyaProvider<GbaData>()
-        let request = provider.request(.search(request: ["q":"\(inputText)", "maxResults":"12"])) {
-            result in
+        let request = provider.request(.search(request: ["q":"\(inputText)", "maxResults":"12"])) { [weak self] result in
+            guard let `self` = self else { return }
             switch result {
             //通信が成功したときの処理
             case let .success(moyaResponse):
@@ -131,9 +127,9 @@ class BookSearchViewController: UIViewController {
                 print("アクセスに失敗しました:\(error)")
             }
             
-            if self.bookDataArray.isEmpty {
-                self.emptyView.isHidden = false
-            }
+            self.emptyView.isHidden = !self.bookDataArray.isEmpty
+            self.emptyView.textLabel.text = self.emptyText
+            
             DispatchQueue.main.async { [weak self] in
                 guard let `self` = self else { return }
                 self.tableView.reloadData()
@@ -246,16 +242,18 @@ extension BookSearchViewController: UISearchBarDelegate {
     
     // 入力中
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //self.resumeSearch(searchBar: searchBar, text: searchText)
+        
     }
     
     // キャンセルボタン
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.searchTextField.resignFirstResponder()
         self.resumeSearch(searchBar: searchBar, text: nil)
     }
     
     //検索ボタンが押されたときの処理
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.searchTextField.resignFirstResponder()
         self.resumeSearch(searchBar: searchBar, text: searchBar.text)
     }
 }
