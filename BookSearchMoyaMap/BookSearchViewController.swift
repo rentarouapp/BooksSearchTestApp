@@ -8,6 +8,7 @@
 
 import UIKit
 import Moya
+import SnapKit
 
 class BookSearchViewController: UIViewController {
     
@@ -25,13 +26,19 @@ class BookSearchViewController: UIViewController {
     
     private var moyaProviders: [Cancellable] = []
     
+    private lazy var emptyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
+    
     private lazy var toolBar: UIToolbar = {
         let toolBar = UIToolbar()
         //完了ボタンを作成
-        let doneButton = UIBarButtonItem(title: "完了",
+        let doneButton = UIBarButtonItem(title: "キャンセル",
                                    style: .done,
                                    target: self,
-                                   action: #selector(didTapDoneButton))
+                                   action: #selector(didTapCancelButton))
         toolBar.items = [doneButton]
         toolBar.sizeToFit()
         return toolBar
@@ -42,10 +49,15 @@ class BookSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 検索結果なしView
+        self.view.addSubview(self.emptyView)
+        self.emptyView.snp.makeConstraints { make in
+            make.top.equalTo(self.tableView).inset(self.searchBar.bounds.size.height)
+            make.left.right.bottom.equalTo(self.tableView)
+        }
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.searchBar.searchTextField.inputAccessoryView = self.toolBar
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +66,7 @@ class BookSearchViewController: UIViewController {
     }
     
     // MARK: - Common
-    @objc func didTapDoneButton(_ sender: UIButton) {
+    @objc func didTapCancelButton(_ sender: UIButton) {
         self.searchBar.searchTextField.resignFirstResponder()
     }
     
@@ -106,12 +118,19 @@ class BookSearchViewController: UIViewController {
                 print("アクセスに失敗しました:\(error)")
             }
             
-            //ビューの描画をメインスレッドで行わすための処理
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            if self.bookDataArray.isEmpty {
+                self.tableView.isHidden = true
+                self.emptyView.isHidden = false
+            } else {
+                self.tableView.isHidden = false
+                self.emptyView.isHidden = true
+                //ビューの描画をメインスレッドで行わすための処理
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self else { return }
+                    self.tableView.reloadData()
+                }
             }
-            //キーボードを閉じる
-            //searchBar.resignFirstResponder()
+            
         }
         self.moyaProviders.append(request)
     }
