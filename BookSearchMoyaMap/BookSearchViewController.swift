@@ -101,6 +101,8 @@ class BookSearchViewController: UIViewController {
             self.moyaProviders.forEach({ $0.cancel() })
             self.moyaProviders.removeAll()
             self.bookDataArray.removeAll()
+            self.emptyView.isHidden = false
+            self.emptyView.textLabel.text = self.emptyText
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -244,7 +246,11 @@ extension BookSearchViewController: UISearchBarDelegate {
     
     // 入力中
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        if searchText.isEmpty {
+            /// 検索バーのバツボタンが押されたとき
+            self.searchBar.searchTextField.resignFirstResponder()
+            self.resumeSearch(searchBar: searchBar, text: nil)
+        }
     }
     
     // キャンセルボタン
@@ -257,6 +263,10 @@ extension BookSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.searchTextField.resignFirstResponder()
         self.resumeSearch(searchBar: searchBar, text: searchBar.text)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.searchBar.searchTextField.resignFirstResponder()
     }
 }
 
