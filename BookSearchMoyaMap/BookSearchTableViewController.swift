@@ -215,7 +215,7 @@ extension BookSearchTableViewController: UISearchBarDelegate {
     
     // 入力中
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.resumeSearch(searchBar: searchBar, text: searchText)
+        //self.resumeSearch(searchBar: searchBar, text: searchText)
     }
     
     // キャンセルボタン
