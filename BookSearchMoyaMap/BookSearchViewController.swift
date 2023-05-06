@@ -248,7 +248,6 @@ extension BookSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             /// 検索バーのバツボタンが押されたとき
-            self.searchBar.searchTextField.resignFirstResponder()
             self.resumeSearch(searchBar: searchBar, text: nil)
         }
     }
