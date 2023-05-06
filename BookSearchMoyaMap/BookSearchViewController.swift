@@ -206,19 +206,16 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
         let session = URLSession.shared
         let task = session.dataTask(with: request) {
             (data: Data?, response: URLResponse?, error: Error?) in
-            
             //エラーチェック
             guard error == nil else {
                 //エラーあり
                 return
             }
-            
             //データを生成
             guard let data = data else {
                 //データがない
                 return
             }
-            
             //イメージを生成
             guard let image = UIImage(data: data) else {
                 //imageが生成できなかった
@@ -232,12 +229,17 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.bookImageView.image = image
             }
         }
-        
         //通信を開始
         task.resume()
-        
         //セルを返す
         return cell
+    }
+    
+    // セルの選択
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let _nav = self.navigationController, let bookData = self.bookDataArray[safe: indexPath.row] {
+            //_nav.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+        }
     }
     
 }
