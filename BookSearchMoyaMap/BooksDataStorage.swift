@@ -19,6 +19,8 @@ struct VolumeInfo: Codable {
     let authors: [String]?
     let imageLinks: ImageLinks?
     let infoLink: String?
+    let publishedDate: String?
+    let description: String?
 }
 
 //Items内のデータ構造

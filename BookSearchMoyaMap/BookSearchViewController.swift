@@ -188,6 +188,7 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
         //サムネイル画像の設定
         guard let bookImageUrl = oneBookData.imageLinks?.smallThumbnail else {
             //画像がなかった場合の処理
+            cell.bookImageView.image = UIImage(named: "search-man")
             return cell
         }
         
@@ -237,8 +238,12 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     // セルの選択
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let _nav = self.navigationController, let bookData = self.bookDataArray[safe: indexPath.row] {
-            //_nav.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let _nav = self.navigationController,
+           let bookData = self.bookDataArray[safe: indexPath.row],
+           let vc = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as? BookDetailViewController {
+            vc.bookData = bookData
+            _nav.pushViewController(vc, animated: true)
         }
     }
     
