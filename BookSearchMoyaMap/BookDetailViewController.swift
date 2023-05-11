@@ -35,6 +35,35 @@ class BookDetailViewController: UIViewController {
             self.publishDateLabel.text = _bookData.publishedDate ?? "発行年なし"
             self.descriptionTextView.text = _bookData.description ?? "※この本に関しての説明はありません"
             self.descriptionTextView.sizeToFit()
+            
+            if let bookImageUrl = _bookData.imageLinks?.thumbnail {
+                // キャッシュ画像がなければ
+                guard let url = URL(string: bookImageUrl) else {
+                    //URLが生成できなかったときの処理
+                    self.thumbnailImageView.image = UIImage(named: "no_image")
+                    return
+                }
+                //生成したURLを使って画像にアクセス
+                let request = URLRequest(url: url)
+                let session = URLSession.shared
+                let task = session.dataTask(with: request) {
+                    (data: Data?, response: URLResponse?, error: Error?) in
+                    
+                    guard error == nil, let data = data, let image = UIImage(data: data) else {
+                        // 例外チェック
+                        self.thumbnailImageView.image = UIImage(named: "no_image")
+                        return
+                    }
+                    //画像に関する処理はメインスレッドで
+                    DispatchQueue.main.async {
+                        self.thumbnailImageView.image = image
+                    }
+                }
+                //通信を開始
+                task.resume()
+            } else {
+                self.thumbnailImageView.image = UIImage(named: "no_image")
+            }
         }
     }
     

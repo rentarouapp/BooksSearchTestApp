@@ -10,6 +10,7 @@ import Foundation
 
 //ImageLinks内のデータ構造
 struct ImageLinks: Codable {
+    let thumbnail: String?
     let smallThumbnail: String?
 }
 
