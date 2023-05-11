@@ -4,6 +4,7 @@ PODS:
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
+  - PKHUD (5.3.0)
   - Realm (10.34.0):
     - Realm/Headers (= 10.34.0)
   - Realm/Headers (10.34.0)
@@ -13,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - Moya
+  - PKHUD
   - RealmSwift
   - SnapKit (~> 5.6.0)
 
@@ -20,6 +22,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Moya
+    - PKHUD
     - Realm
     - RealmSwift
     - SnapKit
@@ -27,10 +30,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Realm: 991e7c4d6d37f1d6470a48bb072782ef00b91b67
   RealmSwift: 11e77934e4af6d011d2970645fe56e11fa0e3c2c
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 654c3034d19c340cc1aa7f931de1bb5f3db12c83
+PODFILE CHECKSUM: 45bab9bdeae414e4cb702b80981f55736a025e37
 
 COCOAPODS: 1.11.3

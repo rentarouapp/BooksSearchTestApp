@@ -7,6 +7,7 @@ target 'BookSearchMoyaMap' do
 
   pod 'SnapKit', '~> 5.6.0'
   pod 'RealmSwift'
+  pod 'PKHUD'
 
   # Pods for BookSearchMoyaMap
 
