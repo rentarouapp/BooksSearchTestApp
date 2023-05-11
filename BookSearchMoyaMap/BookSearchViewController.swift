@@ -193,50 +193,37 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
         
-        //キャッシュの画像を取り出す
         if let cacheImage = imageCache.object(forKey: bookImageUrl as AnyObject) {
+            //キャッシュの画像があったら
             cell.bookImageView.image = cacheImage
-        }
-        //キャッシュの画像がないときのダウンロード
-        guard let url = URL(string: bookImageUrl) else {
-            //URLが生成できなかったときの処理
-            cell.bookImageView.image = UIImage(named: "no_image")
-            return cell
-        }
-        
-        //生成したURLを使って画像にアクセス
-        let request = URLRequest(url: url)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) {
-            (data: Data?, response: URLResponse?, error: Error?) in
-            //エラーチェック
-            guard error == nil else {
-                //エラーあり
+        } else {
+            // キャッシュ画像がなければ
+            guard let url = URL(string: bookImageUrl) else {
+                //URLが生成できなかったときの処理
                 cell.bookImageView.image = UIImage(named: "no_image")
-                return
+                return cell
             }
-            //データを生成
-            guard let data = data else {
-                //データがない
-                cell.bookImageView.image = UIImage(named: "no_image")
-                return
+            //生成したURLを使って画像にアクセス
+            let request = URLRequest(url: url)
+            let session = URLSession.shared
+            let task = session.dataTask(with: request) {
+                (data: Data?, response: URLResponse?, error: Error?) in
+                
+                guard error == nil, let data = data, let image = UIImage(data: data) else {
+                    // 例外チェック
+                    cell.bookImageView.image = UIImage(named: "no_image")
+                    return
+                }
+                //ダウンロードした画像をキャッシュに登録
+                self.imageCache.setObject(image, forKey: bookImageUrl as AnyObject)
+                //画像に関する処理はメインスレッドで
+                DispatchQueue.main.async {
+                    cell.bookImageView.image = image
+                }
             }
-            //イメージを生成
-            guard let image = UIImage(data: data) else {
-                //imageが生成できなかった
-                cell.bookImageView.image = UIImage(named: "no_image")
-                return
-            }
-            //ダウンロードした画像をキャッシュに登録
-            self.imageCache.setObject(image, forKey: bookImageUrl as AnyObject)
-            
-            //画像に関する処理はメインスレッドで
-            DispatchQueue.main.async {
-                cell.bookImageView.image = image
-            }
+            //通信を開始
+            task.resume()
         }
-        //通信を開始
-        task.resume()
         //セルを返す
         return cell
     }
