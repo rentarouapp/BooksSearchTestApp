@@ -31,9 +31,9 @@ class BookDetailViewController: UIViewController {
         if let _bookData = bookData {
             self.navigationItem.title = _bookData.title
             self.titleLabel.text = _bookData.title
-            self.authorLabel.text = _bookData.authors?.first
-            self.publishDateLabel.text = _bookData.publishedDate
-            self.descriptionTextView.text = _bookData.description
+            self.authorLabel.text = _bookData.authors?.first ?? "作者なし"
+            self.publishDateLabel.text = _bookData.publishedDate ?? "発行年なし"
+            self.descriptionTextView.text = _bookData.description ?? "※この本に関しての説明はありません"
             self.descriptionTextView.sizeToFit()
         }
     }
