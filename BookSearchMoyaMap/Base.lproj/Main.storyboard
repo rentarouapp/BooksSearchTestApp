@@ -446,11 +446,11 @@
                                             <constraint firstAttribute="height" constant="160" id="WCK-6q-xaD"/>
                                         </constraints>
                                     </stackView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jLa-fo-LnW">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLa-fo-LnW">
                                         <rect key="frame" x="0.0" y="180" width="343" height="160"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="i45-33-rm7"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="160" id="i45-33-rm7"/>
                                         </constraints>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
@@ -468,7 +468,7 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Webで見る"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="30"/>
+                                                <integer key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
@@ -489,6 +489,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nUZ-vG-mrx"/>
+                    <connections>
+                        <outlet property="authorLabel" destination="3nb-BK-26t" id="WOU-ez-BKc"/>
+                        <outlet property="descriptionTextView" destination="jLa-fo-LnW" id="qv1-bq-NSH"/>
+                        <outlet property="publishDateLabel" destination="G4X-zm-1Xo" id="wB8-XP-cm7"/>
+                        <outlet property="thumbnailImageView" destination="g02-c1-4xy" id="vPk-Cw-Ka2"/>
+                        <outlet property="titleLabel" destination="JYM-MA-nph" id="6ZR-0P-l1j"/>
+                        <outlet property="webButton" destination="XDj-Bg-xkX" id="bGc-4o-gFR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awY-Bw-S84" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
