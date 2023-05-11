@@ -32,7 +32,7 @@ class BookDetailViewController: UIViewController {
             self.navigationItem.title = _bookData.title
             self.titleLabel.text = _bookData.title
             self.authorLabel.text = _bookData.authors?.first ?? "作者なし"
-            self.publishDateLabel.text = _bookData.publishedDate ?? "発行年なし"
+            self.publishDateLabel.text = _bookData.publishedDate ?? "発刊年月日なし"
             self.descriptionTextView.text = _bookData.description ?? "※この本に関しての説明はありません"
             self.descriptionTextView.sizeToFit()
             
@@ -64,6 +64,12 @@ class BookDetailViewController: UIViewController {
             } else {
                 self.thumbnailImageView.image = UIImage(named: "no_image")
             }
+        }
+    }
+    
+    @IBAction func webButtonTapped(_ sender: Any) {
+        if let urlString = bookData?.infoLink, let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
         }
     }
     
