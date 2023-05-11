@@ -44,34 +44,43 @@ class RealmManager {
     }
     
     // データの書き込み
-    static func writeData(bookItem: BookItem) {
+    static func writeBookData(bookItem: BookItem, completion: @escaping (Error?) -> Void) {
         guard let realm = RealmManager.getRealm() else { return }
         let realmBookData = RealmManager.getRealmBookDataObjct(bookItem: bookItem)
         do {
             try realm.write {
                 realm.add(realmBookData)
+                completion(nil)
             }
         } catch {
             // ダイアログ表示
-            print(error.localizedDescription)
+            completion(error)
         }
     }
     
     // データの削除
-    static func deleteData(id: String) {
+    static func deleteBookData(id: String, completion: @escaping (Error?) -> Void) {
         guard let realm = RealmManager.getRealm() else { return }
         let targetBookData = realm.objects(RealmBookData.self).filter("id == \(id)")
         do {
             try realm.write {
                 realm.delete(targetBookData)
+                completion(nil)
             }
         } catch {
             // ダイアログ表示
-            print(error.localizedDescription)
+            completion(error)
         }
     }
     
-    // データ取得
+    // idに紐づくデータあるか判定
+    static func isAvailableRealmBookDataFromId(id: String) -> Bool {
+        guard let realm = RealmManager.getRealm() else { return false }
+        let targetBookDatas = realm.objects(RealmBookData.self).filter("id == \(id)")
+        return !targetBookDatas.isEmpty
+    }
+    
+    // データ全件取得
     static func getRealmBookData() -> [BookItem]? {
         guard let realm = RealmManager.getRealm() else { return nil }
         var bookItems: [BookItem] = []
