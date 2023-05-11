@@ -29,7 +29,7 @@ class BookSearchViewController: UIViewController {
     private var emptyText: String {
         get {
             if let text = self.searchBar.text, text.count > 0 {
-                return "「\(text)」での検索結果はありませんでした。"
+                return "「\(text)」\n\nでの検索結果はありませんでした。"
             }
             return "本を探せるよ！"
         }
