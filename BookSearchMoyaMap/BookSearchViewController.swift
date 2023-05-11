@@ -13,7 +13,7 @@ import SnapKit
 class BookSearchViewController: UIViewController {
     
     //一冊の本（ひとつのアイテム）の情報を格納する変数
-    private var bookDataArray = [VolumeInfo]()
+    private var bookDataArray = [BookItem]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -121,9 +121,7 @@ class BookSearchViewController: UIViewController {
                 //オブジェクトの存在を確認してから商品のリストに追加
                 if let _items = jsonData?.items {
                     for item in _items {
-                        if let _volumeInfo = item.volumeInfo {
-                            self.bookDataArray.append(_volumeInfo)
-                        }
+                        self.bookDataArray.append(item)
                     }
                 }
                 
@@ -168,7 +166,10 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
 
-        let oneBookData = bookDataArray[indexPath.row]
+        //let oneBookData = bookDataArray[indexPath.row]
+        guard let oneBookData = bookDataArray[indexPath.row].volumeInfo else {
+            return UITableViewCell()
+        }
         
         //本のタイトルを設定
         cell.titleLabel.text = oneBookData.title

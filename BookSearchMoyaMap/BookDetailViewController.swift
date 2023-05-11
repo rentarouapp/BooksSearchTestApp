@@ -10,7 +10,7 @@ import UIKit
 
 class BookDetailViewController: UIViewController {
     
-    var bookData: VolumeInfo?
+    var bookData: BookItem?
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var webButton: UIButton!
@@ -28,7 +28,7 @@ class BookDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let _bookData = bookData {
+        if let _bookData = bookData?.volumeInfo {
             self.navigationItem.title = _bookData.title
             self.titleLabel.text = _bookData.title
             self.authorLabel.text = _bookData.authors?.first ?? "作者なし"
@@ -68,7 +68,7 @@ class BookDetailViewController: UIViewController {
     }
     
     @IBAction func webButtonTapped(_ sender: Any) {
-        if let urlString = bookData?.infoLink, let url = URL(string: urlString) {
+        if let urlString = bookData?.volumeInfo?.infoLink, let url = URL(string: urlString) {
             UIApplication.shared.open(url)
         }
     }

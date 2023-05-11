@@ -25,11 +25,12 @@ struct VolumeInfo: Codable {
 }
 
 //Items内のデータ構造
-struct Items: Codable {
+struct BookItem: Codable {
+    let id: String?
     let volumeInfo: VolumeInfo?
 }
 
 //全てのデータの構造
 struct TotalItems: Codable {
-    let items: [Items]?
+    let items: [BookItem]?
 }

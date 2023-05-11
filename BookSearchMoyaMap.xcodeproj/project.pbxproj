@@ -32,6 +32,7 @@
 		B79B67192A04D7DD00C1836C /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B67182A04D7DD00C1836C /* EmptyView.swift */; };
 		B79B671B2A06211000C1836C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B671A2A06211000C1836C /* Extensions.swift */; };
 		B79B671D2A06220C00C1836C /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B671C2A06220C00C1836C /* BookDetailViewController.swift */; };
+		B79B671F2A0D236E00C1836C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B671E2A0D236E00C1836C /* RealmManager.swift */; };
 		B7F8183429FE97D700220003 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F8183329FE97D700220003 /* EmptyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		B79B67182A04D7DD00C1836C /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		B79B671A2A06211000C1836C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B79B671C2A06220C00C1836C /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		B79B671E2A0D236E00C1836C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		B7F8183329FE97D700220003 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		E1335D07DD773D5A320C0235 /* Pods-BookSearchMoyaMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookSearchMoyaMap.release.xcconfig"; path = "Target Support Files/Pods-BookSearchMoyaMap/Pods-BookSearchMoyaMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +190,7 @@
 				B77EBAD72465064400A6CD05 /* ItemTableViewCell.swift */,
 				B7F8183329FE97D700220003 /* EmptyTableViewCell.swift */,
 				B77EBAD12464F81300A6CD05 /* StoreSearchViewController.swift */,
+				B79B671E2A0D236E00C1836C /* RealmManager.swift */,
 				B79B671A2A06211000C1836C /* Extensions.swift */,
 				B77EBAAA2464F4F600A6CD05 /* Assets.xcassets */,
 				B77EBAAC2464F4F600A6CD05 /* LaunchScreen.storyboard */,
@@ -460,6 +463,7 @@
 				B77EBAD62464FE1F00A6CD05 /* BooksDataStorage.swift in Sources */,
 				B77EBAE024655E9000A6CD05 /* StoreTableViewController.swift in Sources */,
 				B7F8183429FE97D700220003 /* EmptyTableViewCell.swift in Sources */,
+				B79B671F2A0D236E00C1836C /* RealmManager.swift in Sources */,
 				B79B671D2A06220C00C1836C /* BookDetailViewController.swift in Sources */,
 				B77EBAA62464F4D900A6CD05 /* ViewController.swift in Sources */,
 				B77EBADA2465294900A6CD05 /* GbaData.swift in Sources */,
