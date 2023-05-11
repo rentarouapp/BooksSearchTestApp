@@ -189,7 +189,7 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
         //サムネイル画像の設定
         guard let bookImageUrl = oneBookData.imageLinks?.smallThumbnail else {
             //画像がなかった場合の処理
-            cell.bookImageView.image = UIImage(named: "search-man")
+            cell.bookImageView.image = UIImage(named: "no_image")
             return cell
         }
         
@@ -200,6 +200,7 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
         //キャッシュの画像がないときのダウンロード
         guard let url = URL(string: bookImageUrl) else {
             //URLが生成できなかったときの処理
+            cell.bookImageView.image = UIImage(named: "no_image")
             return cell
         }
         
@@ -211,16 +212,19 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
             //エラーチェック
             guard error == nil else {
                 //エラーあり
+                cell.bookImageView.image = UIImage(named: "no_image")
                 return
             }
             //データを生成
             guard let data = data else {
                 //データがない
+                cell.bookImageView.image = UIImage(named: "no_image")
                 return
             }
             //イメージを生成
             guard let image = UIImage(data: data) else {
                 //imageが生成できなかった
+                cell.bookImageView.image = UIImage(named: "no_image")
                 return
             }
             //ダウンロードした画像をキャッシュに登録
