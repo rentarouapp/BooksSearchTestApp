@@ -66,12 +66,13 @@ class BookSearchViewController: UIViewController {
         }
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.tableFooterView = UIView()
+        self.tableView.estimatedRowHeight = 120
         self.searchBar.searchTextField.inputAccessoryView = self.toolBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.navigationItem.title = "本を探す"
         
     }
