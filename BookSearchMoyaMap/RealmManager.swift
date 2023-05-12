@@ -12,7 +12,7 @@ import RealmSwift
 class RealmBookData: Object {
     @objc dynamic var id: String = ""
     @objc dynamic var title: String = ""
-    @objc dynamic var authors: [String] = []
+    var authors = List<String>()
     @objc dynamic var smallImageUrl: String = ""
     @objc dynamic var largeImageUrl: String = ""
     @objc dynamic var infoUrl: String = ""
@@ -34,7 +34,10 @@ class RealmManager {
     static func getRealmBookDataObjct(bookItem: BookItem) -> RealmBookData {
         let realmBookData = RealmBookData()
         realmBookData.title = bookItem.volumeInfo?.title ?? ""
-        realmBookData.authors = bookItem.volumeInfo?.authors ?? []
+        let arrayAuthors = bookItem.volumeInfo?.authors ?? []
+        arrayAuthors.forEach {
+            realmBookData.authors.append($0)
+        }
         realmBookData.smallImageUrl = bookItem.volumeInfo?.imageLinks?.smallThumbnail ?? ""
         realmBookData.largeImageUrl = bookItem.volumeInfo?.imageLinks?.thumbnail ?? ""
         realmBookData.infoUrl = bookItem.volumeInfo?.infoLink ?? ""
@@ -87,7 +90,7 @@ class RealmManager {
         let results = realm.objects(RealmBookData.self)
         results.forEach {
             let imageLink = ImageLinks(thumbnail: $0.largeImageUrl, smallThumbnail: $0.smallImageUrl)
-            let volumeInfo = VolumeInfo(title: $0.title, authors: $0.authors, imageLinks: imageLink, infoLink: $0.infoUrl, publishedDate: $0.publishedDate, description: $0.textDescription)
+            let volumeInfo = VolumeInfo(title: $0.title, authors: Array($0.authors), imageLinks: imageLink, infoLink: $0.infoUrl, publishedDate: $0.publishedDate, description: $0.textDescription)
             let bookItem: BookItem = BookItem(id: $0.id, volumeInfo: volumeInfo)
             bookItems.append(bookItem)
         }
