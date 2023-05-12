@@ -111,8 +111,10 @@ class BookSearchViewController: UIViewController {
         }
         
         let provider = MoyaProvider<GbaData>()
+        IndicatorManager.showIndicator()
         let request = provider.request(.search(request: ["q":"\(inputText)", "maxResults":"12"])) { [weak self] result in
             guard let `self` = self else { return }
+            IndicatorManager.completeIndicator()
             switch result {
             //通信が成功したときの処理
             case let .success(moyaResponse):

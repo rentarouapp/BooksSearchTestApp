@@ -16,6 +16,6 @@ class IndicatorManager {
     }
     
     static func completeIndicator() {
-        HUD.flash(.success, delay: 1.0)
+        HUD.flash(.success, delay: 0.3)
     }
 }
