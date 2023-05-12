@@ -81,8 +81,8 @@ class RealmManager {
     }
     
     // データ全件取得
-    static func getRealmBookData() -> [BookItem]? {
-        guard let realm = RealmManager.getRealm() else { return nil }
+    static func getRealmAllBookData() -> [BookItem] {
+        guard let realm = RealmManager.getRealm() else { return [] }
         var bookItems: [BookItem] = []
         let results = realm.objects(RealmBookData.self)
         results.forEach {

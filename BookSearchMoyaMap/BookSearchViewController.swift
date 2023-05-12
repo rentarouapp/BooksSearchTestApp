@@ -168,7 +168,6 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
 
-        //let oneBookData = bookDataArray[indexPath.row]
         guard let oneBookData = bookDataArray[indexPath.row].volumeInfo else {
             return UITableViewCell()
         }
