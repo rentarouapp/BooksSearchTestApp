@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class RealmBookData: Object {
-    @objc dynamic var id: String = ""
+    @objc dynamic var bookId: String = ""
     @objc dynamic var title: String = ""
     var authors = List<String>()
     @objc dynamic var smallImageUrl: String = ""
@@ -79,7 +79,7 @@ class RealmManager {
     // idに紐づくデータあるか判定
     static func isAvailableRealmBookDataFromId(id: String) -> Bool {
         guard let realm = RealmManager.getRealm() else { return false }
-        let targetBookDatas = realm.objects(RealmBookData.self).filter("id == \(id)")
+        let targetBookDatas = realm.objects(RealmBookData.self).filter("bookId == \(id)")
         return !targetBookDatas.isEmpty
     }
     
@@ -91,7 +91,7 @@ class RealmManager {
         results.forEach {
             let imageLink = ImageLinks(thumbnail: $0.largeImageUrl, smallThumbnail: $0.smallImageUrl)
             let volumeInfo = VolumeInfo(title: $0.title, authors: Array($0.authors), imageLinks: imageLink, infoLink: $0.infoUrl, publishedDate: $0.publishedDate, description: $0.textDescription)
-            let bookItem: BookItem = BookItem(id: $0.id, volumeInfo: volumeInfo)
+            let bookItem: BookItem = BookItem(id: $0.bookId, volumeInfo: volumeInfo)
             bookItems.append(bookItem)
         }
         return bookItems

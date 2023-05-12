@@ -29,15 +29,23 @@ class BookDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let _bookData = bookData?.volumeInfo {
-            self.navigationItem.title = _bookData.title
-            self.titleLabel.text = _bookData.title
-            self.authorLabel.text = _bookData.authors?.first ?? "作者なし"
-            self.publishDateLabel.text = _bookData.publishedDate ?? "発刊年月日なし"
-            self.descriptionTextView.text = _bookData.description ?? "※この本に関しての説明はありません"
+        if let _bookData = bookData, let _volumeInfo = _bookData.volumeInfo {
+            self.navigationItem.title = _volumeInfo.title
+            self.titleLabel.text = _volumeInfo.title
+            self.authorLabel.text = _volumeInfo.authors?.first ?? "作者なし"
+            self.publishDateLabel.text = _volumeInfo.publishedDate ?? "発刊年月日なし"
+            self.descriptionTextView.text = _volumeInfo.description ?? "※この本に関しての説明はありません"
             self.descriptionTextView.sizeToFit()
             
-            if let bookImageUrl = _bookData.imageLinks?.thumbnail {
+            if let _bookId = _bookData.id, RealmManager.isAvailableRealmBookDataFromId(id: _bookId) {
+                /// お気に入り登録があったら
+                self.setFavoriteButton(isFavorite: true)
+            } else {
+                /// なければ
+                self.setFavoriteButton(isFavorite: false)
+            }
+            
+            if let bookImageUrl = _volumeInfo.imageLinks?.thumbnail {
                 // キャッシュ画像がなければ
                 guard let url = URL(string: bookImageUrl) else {
                     //URLが生成できなかったときの処理
@@ -66,6 +74,22 @@ class BookDetailViewController: UIViewController {
                 self.thumbnailImageView.image = UIImage(named: "no_image")
             }
         }
+    }
+    
+    private func setFavoriteButton(isFavorite: Bool) {
+        
+        let offBackgroundColor: UIColor = UIColor.systemYellow
+        let offTintColor: UIColor = UIColor.white
+        
+        let onBackgroundColor: UIColor = UIColor.white
+        let onTintColor: UIColor = UIColor.systemYellow
+        
+        self.favoriteButton.backgroundColor = isFavorite ? onBackgroundColor : offBackgroundColor
+        self.favoriteButton.imageView?.image = isFavorite ? UIImage.init(systemName: "heart.fill") : UIImage.init(systemName: "heart.fill")
+        self.favoriteButton.imageView?.tintColor = isFavorite ? onTintColor : offTintColor
+        self.favoriteButton.titleLabel?.tintColor = isFavorite ? onTintColor : offTintColor
+        self.favoriteButton.layer.borderWidth = isFavorite ? 2.0 : 0.0
+        self.favoriteButton.layer.borderColor = isFavorite ? onTintColor.cgColor : UIColor.clear.cgColor
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {

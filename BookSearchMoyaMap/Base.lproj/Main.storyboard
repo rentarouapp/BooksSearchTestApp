@@ -563,7 +563,9 @@
                                                                 </constraints>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="お気に入りに追加"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="お気に入りに追加">
+                                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                                                </buttonConfiguration>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                         <integer key="value" value="6"/>
@@ -581,7 +583,9 @@
                                                                 </constraints>
                                                                 <color key="tintColor" systemColor="systemBackgroundColor"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="safari" catalog="system" title="ブラウザで開く"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="safari" catalog="system" title="ブラウザで開く">
+                                                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                                                </buttonConfiguration>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                         <integer key="value" value="6"/>
