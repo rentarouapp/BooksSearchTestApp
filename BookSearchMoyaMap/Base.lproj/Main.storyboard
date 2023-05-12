@@ -451,10 +451,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clh-PF-V7L">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="891"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="961"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jAb-aH-K9n">
-                                                <rect key="frame" x="16" y="16" width="343" height="859"/>
+                                                <rect key="frame" x="16" y="16" width="343" height="929"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="caX-eb-PsW">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="160"/>
@@ -552,24 +552,47 @@
                                                             </textView>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDj-Bg-xkX">
-                                                        <rect key="frame" x="0.0" y="799" width="343" height="60"/>
-                                                        <color key="backgroundColor" systemColor="linkColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="60" id="NKJ-1l-0Qi"/>
-                                                        </constraints>
-                                                        <color key="tintColor" systemColor="systemBackgroundColor"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" image="safari" catalog="system" title="ブラウザで開く"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="webButtonTapped:" destination="vN1-N4-6tL" eventType="touchUpInside" id="g3u-JL-JT7"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XcX-aL-XQ2">
+                                                        <rect key="frame" x="0.0" y="799" width="343" height="130"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HP-lY-BnI">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="60"/>
+                                                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="60" id="Gko-ih-vUs"/>
+                                                                </constraints>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="お気に入りに追加"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="favoriteButtonTapped:" destination="vN1-N4-6tL" eventType="touchUpInside" id="hRD-2r-Ucc"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDj-Bg-xkX">
+                                                                <rect key="frame" x="0.0" y="70" width="343" height="60"/>
+                                                                <color key="backgroundColor" systemColor="linkColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="60" id="NKJ-1l-0Qi"/>
+                                                                </constraints>
+                                                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" image="safari" catalog="system" title="ブラウザで開く"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="webButtonTapped:" destination="vN1-N4-6tL" eventType="touchUpInside" id="g3u-JL-JT7"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -606,6 +629,7 @@
                     <connections>
                         <outlet property="authorLabel" destination="3nb-BK-26t" id="WOU-ez-BKc"/>
                         <outlet property="descriptionTextView" destination="jLa-fo-LnW" id="qv1-bq-NSH"/>
+                        <outlet property="favoriteButton" destination="8HP-lY-BnI" id="77C-uE-wWE"/>
                         <outlet property="publishDateLabel" destination="G4X-zm-1Xo" id="wB8-XP-cm7"/>
                         <outlet property="thumbnailImageView" destination="g02-c1-4xy" id="vPk-Cw-Ka2"/>
                         <outlet property="titleLabel" destination="JYM-MA-nph" id="6ZR-0P-l1j"/>
@@ -713,6 +737,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="safari" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -725,6 +750,9 @@
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

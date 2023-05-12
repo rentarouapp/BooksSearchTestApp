@@ -14,6 +14,7 @@ class BookDetailViewController: UIViewController {
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var webButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -65,6 +66,10 @@ class BookDetailViewController: UIViewController {
                 self.thumbnailImageView.image = UIImage(named: "no_image")
             }
         }
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        print("uejo_tapped")
     }
     
     @IBAction func webButtonTapped(_ sender: Any) {
