@@ -81,8 +81,8 @@ class RealmManager {
         }
     }
     
-    // idに紐づくデータあるか判定
-    func isAvailableRealmBookDataFromId(id: String) -> Bool {
+    // idに紐づくお気に入りデータあるか判定
+    func isFavorite(id: String) -> Bool {
         guard let realm = self.realm else { return false }
         let targetBookDatas = realm.objects(RealmBookData.self).where({ $0.bookId == id })
         return !targetBookDatas.isEmpty

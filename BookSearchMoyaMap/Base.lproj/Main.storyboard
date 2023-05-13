@@ -309,13 +309,13 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="249" height="45"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本のタイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNC-0e-qkW">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="45"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="249" height="45"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yqe-Aa-dvn">
-                                                                    <rect key="frame" x="204" y="0.0" width="45" height="45"/>
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yqe-Aa-dvn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                                     <color key="tintColor" systemColor="systemYellowColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="Yqe-Aa-dvn" secondAttribute="height" multiplier="1:1" id="1bT-2r-HY4"/>
@@ -344,6 +344,7 @@
                                         <connections>
                                             <outlet property="authorLabel" destination="VD9-jf-PWv" id="Ztx-9S-bn9"/>
                                             <outlet property="bookImageView" destination="vtK-2f-R1l" id="cRn-dc-Poa"/>
+                                            <outlet property="bookmarkImageView" destination="Yqe-Aa-dvn" id="lBk-YB-nqx"/>
                                             <outlet property="titleLabel" destination="NNC-0e-qkW" id="6rT-mD-M6G"/>
                                         </connections>
                                     </tableViewCell>
@@ -402,13 +403,13 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="249" height="45"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本のタイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lre-Us-ZAg">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="45"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="249" height="45"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0WJ-Fe-f6n">
-                                                                    <rect key="frame" x="204" y="0.0" width="45" height="45"/>
+                                                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0WJ-Fe-f6n">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                                     <color key="tintColor" systemColor="systemYellowColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="0WJ-Fe-f6n" secondAttribute="height" multiplier="1:1" id="Fhz-kx-kM4"/>

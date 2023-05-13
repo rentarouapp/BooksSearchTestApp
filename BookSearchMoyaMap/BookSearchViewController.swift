@@ -24,6 +24,8 @@ class BookSearchViewController: UIViewController {
         }
     }
     
+    let realmManager: RealmManager = RealmManager.shared
+    
     private var moyaProviders: [Cancellable] = []
     
     private var emptyText: String {
@@ -74,6 +76,7 @@ class BookSearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "本を探す"
+        self.tableView.reloadData()
         
     }
     
@@ -168,28 +171,33 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
 
-        guard let oneBookData = bookDataArray[indexPath.row].volumeInfo else {
+        guard let _bookData = bookDataArray[safe: indexPath.row], let volumeInfo = _bookData.volumeInfo else {
             return UITableViewCell()
         }
         
         //本のタイトルを設定
-        cell.titleLabel.text = oneBookData.title
+        cell.titleLabel.text = volumeInfo.title
         
         //本の作者を設定
-        if oneBookData.authors != nil {
+        if volumeInfo.authors != nil {
             //作者がいる場合の処理
-            let hitAuthors = oneBookData.authors?.joined(separator: ",")
+            let hitAuthors = volumeInfo.authors?.joined(separator: ",")
             cell.authorLabel.text = hitAuthors
         } else {
             //作者がいなかった場合
             cell.authorLabel.text = "作者なし"
         }
         
+        // お気に入りアイコン
+        if let _bookId = _bookData.id {
+            cell.bookmarkImageView.isHidden = self.realmManager.isFavorite(id: _bookId) ? false : true
+        }
+        
         //本のURLを設定
-        cell.bookUrl = oneBookData.infoLink
+        cell.bookUrl = volumeInfo.infoLink
         
         //サムネイル画像の設定
-        guard let bookImageUrl = oneBookData.imageLinks?.smallThumbnail else {
+        guard let bookImageUrl = volumeInfo.imageLinks?.smallThumbnail else {
             //画像がなかった場合の処理
             cell.bookImageView.image = UIImage(named: "no_image")
             return cell
