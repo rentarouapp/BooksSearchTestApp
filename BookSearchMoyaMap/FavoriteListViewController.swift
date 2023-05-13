@@ -47,6 +47,7 @@ class FavoriteListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationItem.title = "お気に入り一覧"
         self.loadData()
     }
     
@@ -55,8 +56,10 @@ class FavoriteListViewController: UIViewController {
         if self.favoriteBookDataArray.isEmpty {
             self.emptyView.isHidden = false
             return
+        } else {
+            self.emptyView.isHidden = true
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
     }
     
     // MARK: - Common
@@ -148,5 +151,14 @@ extension FavoriteListViewController: UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let _nav = self.navigationController,
+           let bookData = self.favoriteBookDataArray[safe: indexPath.row],
+           let vc = self.storyboard?.instantiateViewController(withIdentifier: "BookDetailViewController") as? BookDetailViewController {
+            vc.bookData = bookData
+            _nav.pushViewController(vc, animated: true)
+        }
+    }
 }
 

@@ -23,6 +23,11 @@ class BookDetailViewController: UIViewController {
     
     let realmManager = RealmManager.shared
     
+    private var isFavorite: Bool {
+        guard let _bookId = self.bookData?.id else { return false }
+        return self.realmManager.isAvailableRealmBookDataFromId(id: _bookId)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,12 +39,12 @@ class BookDetailViewController: UIViewController {
         if let _bookData = bookData, let _volumeInfo = _bookData.volumeInfo {
             self.navigationItem.title = _volumeInfo.title
             self.titleLabel.text = _volumeInfo.title
-            self.authorLabel.text = _volumeInfo.authors?.first ?? "作者なし"
-            self.publishDateLabel.text = _volumeInfo.publishedDate ?? "発刊年月日なし"
-            self.descriptionTextView.text = _volumeInfo.description ?? "※この本に関しての説明はありません"
+            self.authorLabel.text = _volumeInfo.authors?.first == nil || _volumeInfo.authors?.first == "" ? "作者なし" : _volumeInfo.authors?.first
+            self.publishDateLabel.text = _volumeInfo.publishedDate == nil || _volumeInfo.publishedDate == "" ? "発刊年月日なし" : _volumeInfo.publishedDate
+            self.descriptionTextView.text = _volumeInfo.description == nil || _volumeInfo.description == "" ? "※この本に関しての説明はありません" : _volumeInfo.description
             self.descriptionTextView.sizeToFit()
             
-            if let _bookId = _bookData.id, self.realmManager.isAvailableRealmBookDataFromId(id: _bookId) {
+            if let _bookId = _bookData.id, self.isFavorite {
                 /// お気に入り登録があったら
                 self.setFavoriteButton(isFavorite: true)
             } else {
@@ -94,22 +99,63 @@ class BookDetailViewController: UIViewController {
         self.favoriteButton.tintColor = isFavorite ? onTintColor : offTintColor
     }
     
-    @IBAction func favoriteButtonTapped(_ sender: Any) {
-        if let _bookItem = self.bookData {
+    func realmUpdateAction(isFavorite: Bool, completion: @escaping () -> (Void)) {
+        guard let _bookItem = self.bookData, let _bookId = self.bookData?.id else { return }
+        if self.isFavorite {
+            // お気に入り登録されていたら削除
+            self.realmManager.deleteBookData(id: _bookId, completion: { [weak self] error in
+                guard let `self` = self else { return }
+                if let _error = error {
+                    AlertManager.showErrorAlert(self, error: _error)
+                    return
+                }
+                completion()
+            })
+            
+        } else {
+            // お気に入り登録されていなかったら登録
             self.realmManager.writeBookData(bookItem: _bookItem, completion: { [weak self] error in
                 guard let `self` = self else { return }
                 if let _error = error {
-                    print("uejo_\(_error.localizedDescription)")
+                    AlertManager.showErrorAlert(self, error: _error)
                     return
                 }
-                if self.realmManager.isAvailableRealmBookDataFromId(id: _bookItem.id ?? "") {
-                    DispatchQueue.main.async {
-                        AlertManager.showAlertIn(self, message: "お気に入り登録が完了しました！", cancelText: "閉じる", doneText: nil, cancelCompletion: {
-                            self.setFavoriteButton(isFavorite: true)
-                        }, doneCompletion: nil)
-                    }
-                }
+                completion()
             })
+        }
+    }
+    
+    @IBAction func favoriteButtonTapped(_ sender: Any) {
+        let realmUpdatedCompletion: () -> Void = { [weak self] in
+            guard let `self` = self else { return }
+            if self.isFavorite {
+                // お気に入りに登録されたら
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self else { return }
+                    AlertManager.showAlertIn(self, title: "お気に入り登録", message: "お気に入り登録が完了しました！", cancelText: "閉じる", doneText: nil, cancelCompletion: {
+                        self.setFavoriteButton(isFavorite: true)
+                    }, doneCompletion: nil)
+                }
+            } else {
+                // お気に入りから削除されたら
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self else { return }
+                    AlertManager.showAlertIn(self, title: "お気に入り削除", message: "お気に入りから削除しました！", cancelText: "閉じる", doneText: nil, cancelCompletion: {
+                        self.setFavoriteButton(isFavorite: true)
+                        // 前の画面に戻る
+                        self.navigationController?.popViewController(animated: true)
+                    }, doneCompletion: nil)
+                }
+            }
+        }
+        if self.isFavorite {
+            // 削除だったらアラートを出してから
+            AlertManager.showAlertIn(self, title: "削除", message: "\(self.bookData?.volumeInfo?.title ?? "")をお気に入りから削除してよいですか？", cancelText: "いいえ", doneText: "削除", isDelete: true, cancelCompletion: nil, doneCompletion: { [weak self] in
+                guard let `self` = self else { return }
+                self.realmUpdateAction(isFavorite: self.isFavorite, completion: realmUpdatedCompletion)
+            })
+        } else {
+            self.realmUpdateAction(isFavorite: self.isFavorite, completion: realmUpdatedCompletion)
         }
     }
     

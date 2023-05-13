@@ -10,15 +10,18 @@ import UIKit
 
 class AlertManager {
     
-    static func generateAlert(message: String,
+    static func generateAlert(title: String?,
+                              message: String,
                               cancelText: String,
                               doneText: String?,
+                              isDelete: Bool = false,
                               cancelCompletion: (() -> Void)?,
                               doneCompletion: (() -> Void)?) -> UIAlertController {
         
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if let _doneText = doneText {
-            let doneAction = UIAlertAction(title: _doneText, style: .default, handler: { (action) -> Void in
+            let style: UIAlertAction.Style = isDelete ? .destructive : .default
+            let doneAction = UIAlertAction(title: _doneText, style: style, handler: { (action) -> Void in
                 doneCompletion?()
             })
             alert.addAction(doneAction)
@@ -31,13 +34,32 @@ class AlertManager {
     }
     
     static func showAlertIn(_ viewController: UIViewController,
+                            title: String? = nil,
                             message: String,
                             cancelText: String,
                             doneText: String?,
+                            isDelete: Bool = false,
                             cancelCompletion: (() -> Void)?,
                             doneCompletion: (() -> Void)?) {
         
-        let alert = AlertManager.generateAlert(message: message, cancelText: cancelText, doneText: doneText, cancelCompletion: cancelCompletion, doneCompletion: doneCompletion)
+        let alert = AlertManager.generateAlert(title: title,
+                                               message: message,
+                                               cancelText: cancelText,
+                                               doneText: doneText,
+                                               isDelete: isDelete,
+                                               cancelCompletion: cancelCompletion,
+                                               doneCompletion: doneCompletion)
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
+    static func showErrorAlert(_ viewController: UIViewController, error: Error) {
+        let message = error.localizedDescription
+        let alert = AlertManager.generateAlert(title: "エラー",
+                                               message: message,
+                                               cancelText: "閉じる",
+                                               doneText: nil,
+                                               cancelCompletion: nil,
+                                               doneCompletion: nil)
         viewController.present(alert, animated: true, completion: nil)
     }
     

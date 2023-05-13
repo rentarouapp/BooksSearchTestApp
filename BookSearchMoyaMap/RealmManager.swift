@@ -69,7 +69,7 @@ class RealmManager {
     // データの削除
     func deleteBookData(id: String, completion: @escaping (Error?) -> Void) {
         guard let realm = self.realm else { return }
-        let targetBookData = realm.objects(RealmBookData.self).filter("id == \(id)")
+        let targetBookData = realm.objects(RealmBookData.self).where({ $0.bookId == id })
         do {
             try realm.write {
                 realm.delete(targetBookData)
