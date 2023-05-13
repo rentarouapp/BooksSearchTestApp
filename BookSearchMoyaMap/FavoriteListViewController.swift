@@ -23,6 +23,8 @@ class FavoriteListViewController: UIViewController {
     //キャッシュ画像を保存するための変数
     var imageCache = NSCache<AnyObject, UIImage>()
     
+    let realmManager = RealmManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // 検索結果なしView
@@ -45,14 +47,11 @@ class FavoriteListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.favoriteBookDataArray = RealmManager.getRealmAllBookData()
-        self.tableView.reloadData()
-        
+        self.loadData()
     }
     
     private func loadData() {
-        self.favoriteBookDataArray = RealmManager.getRealmAllBookData()
+        self.favoriteBookDataArray = self.realmManager.getRealmAllBookData()
         if self.favoriteBookDataArray.isEmpty {
             self.emptyView.isHidden = false
             return

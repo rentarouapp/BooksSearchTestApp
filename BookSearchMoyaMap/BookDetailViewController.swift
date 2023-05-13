@@ -21,6 +21,8 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var publishDateLabel: UILabel!
     
+    let realmManager = RealmManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +39,7 @@ class BookDetailViewController: UIViewController {
             self.descriptionTextView.text = _volumeInfo.description ?? "※この本に関しての説明はありません"
             self.descriptionTextView.sizeToFit()
             
-            if let _bookId = _bookData.id, RealmManager.isAvailableRealmBookDataFromId(id: _bookId) {
+            if let _bookId = _bookData.id, self.realmManager.isAvailableRealmBookDataFromId(id: _bookId) {
                 /// お気に入り登録があったら
                 self.setFavoriteButton(isFavorite: true)
             } else {
@@ -85,15 +87,30 @@ class BookDetailViewController: UIViewController {
         let onTintColor: UIColor = UIColor.systemYellow
         
         self.favoriteButton.backgroundColor = isFavorite ? onBackgroundColor : offBackgroundColor
-        self.favoriteButton.imageView?.image = isFavorite ? UIImage.init(systemName: "heart.fill") : UIImage.init(systemName: "heart.fill")
-        self.favoriteButton.imageView?.tintColor = isFavorite ? onTintColor : offTintColor
-        self.favoriteButton.titleLabel?.tintColor = isFavorite ? onTintColor : offTintColor
         self.favoriteButton.layer.borderWidth = isFavorite ? 2.0 : 0.0
         self.favoriteButton.layer.borderColor = isFavorite ? onTintColor.cgColor : UIColor.clear.cgColor
+        self.favoriteButton.setTitle(isFavorite ? "お気に入りから削除する" : "お気に入りに追加する", for: .normal)
+        self.favoriteButton.imageView?.image = isFavorite ? UIImage.init(systemName: "heart.fill") : UIImage.init(systemName: "heart")
+        self.favoriteButton.tintColor = isFavorite ? onTintColor : offTintColor
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
-        print("uejo_tapped")
+        if let _bookItem = self.bookData {
+            self.realmManager.writeBookData(bookItem: _bookItem, completion: { [weak self] error in
+                guard let `self` = self else { return }
+                if let _error = error {
+                    print("uejo_\(_error.localizedDescription)")
+                    return
+                }
+                if self.realmManager.isAvailableRealmBookDataFromId(id: _bookItem.id ?? "") {
+                    DispatchQueue.main.async {
+                        AlertManager.showAlertIn(self, message: "お気に入り登録が完了しました！", cancelText: "閉じる", doneText: nil, cancelCompletion: {
+                            self.setFavoriteButton(isFavorite: true)
+                        }, doneCompletion: nil)
+                    }
+                }
+            })
+        }
     }
     
     @IBAction func webButtonTapped(_ sender: Any) {

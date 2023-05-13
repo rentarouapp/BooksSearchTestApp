@@ -13,16 +13,19 @@ class AlertManager {
     static func generateAlert(message: String,
                               cancelText: String,
                               doneText: String?,
-                              completion: (() -> Void)?) -> UIAlertController {
+                              cancelCompletion: (() -> Void)?,
+                              doneCompletion: (() -> Void)?) -> UIAlertController {
         
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         if let _doneText = doneText {
             let doneAction = UIAlertAction(title: _doneText, style: .default, handler: { (action) -> Void in
-                completion?()
+                doneCompletion?()
             })
             alert.addAction(doneAction)
         }
-        let cancelAction = UIAlertAction(title: cancelText, style: .cancel)
+        let cancelAction = UIAlertAction(title: cancelText, style: .cancel, handler: { (action) -> Void in
+            cancelCompletion?()
+        })
         alert.addAction(cancelAction)
         return alert
     }
@@ -31,9 +34,10 @@ class AlertManager {
                             message: String,
                             cancelText: String,
                             doneText: String?,
-                            completion: (() -> Void)?) {
+                            cancelCompletion: (() -> Void)?,
+                            doneCompletion: (() -> Void)?) {
         
-        let alert = AlertManager.generateAlert(message: message, cancelText: cancelText, doneText: doneText, completion: completion)
+        let alert = AlertManager.generateAlert(message: message, cancelText: cancelText, doneText: doneText, cancelCompletion: cancelCompletion, doneCompletion: doneCompletion)
         viewController.present(alert, animated: true, completion: nil)
     }
     
