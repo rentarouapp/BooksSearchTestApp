@@ -65,7 +65,8 @@ class FavoriteListViewController: UIViewController {
     // MARK: - Common
     @objc func refreshTableView() {
         // 引っ張って更新
-        
+        self.tableView.refreshControl?.endRefreshing()
+        self.loadData()
     }
     
 }

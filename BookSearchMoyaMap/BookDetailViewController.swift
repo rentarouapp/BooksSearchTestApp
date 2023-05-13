@@ -95,7 +95,7 @@ class BookDetailViewController: UIViewController {
         self.favoriteButton.layer.borderWidth = isFavorite ? 2.0 : 0.0
         self.favoriteButton.layer.borderColor = isFavorite ? onTintColor.cgColor : UIColor.clear.cgColor
         self.favoriteButton.setTitle(isFavorite ? "お気に入りから削除する" : "お気に入りに追加する", for: .normal)
-        self.favoriteButton.imageView?.image = isFavorite ? UIImage.init(systemName: "heart.fill") : UIImage.init(systemName: "heart")
+        self.favoriteButton.imageView?.image = isFavorite ? UIImage.init(systemName: "star.fill") : UIImage.init(systemName: "star")
         self.favoriteButton.tintColor = isFavorite ? onTintColor : offTintColor
     }
     

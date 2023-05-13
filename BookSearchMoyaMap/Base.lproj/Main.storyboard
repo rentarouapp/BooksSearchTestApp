@@ -563,7 +563,7 @@
                                                                 </constraints>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="お気に入りに追加">
+                                                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system" title="お気に入りに追加">
                                                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
                                                                 </buttonConfiguration>
                                                                 <userDefinedRuntimeAttributes>
@@ -682,11 +682,11 @@
             </objects>
             <point key="canvasLocation" x="984.79999999999995" y="498.80059970014997"/>
         </scene>
-        <!--Item-->
+        <!--検索-->
         <scene sceneID="luO-VJ-Mar">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fg1-lb-2GT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="R7g-np-Vsb"/>
+                    <tabBarItem key="tabBarItem" title="検索" image="magnifyingglass" catalog="system" id="R7g-np-Vsb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XNp-Fy-eWE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -720,11 +720,11 @@
             </objects>
             <point key="canvasLocation" x="985" y="-1565"/>
         </scene>
-        <!--Item-->
+        <!--お気に入り-->
         <scene sceneID="WoB-45-F2C">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kO9-BX-oR5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="BVl-k6-abo"/>
+                    <tabBarItem key="tabBarItem" title="お気に入り" image="star.fill" catalog="system" id="BVl-k6-abo"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ii6-eP-0ZV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -741,8 +741,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="safari" catalog="system" width="128" height="123"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
