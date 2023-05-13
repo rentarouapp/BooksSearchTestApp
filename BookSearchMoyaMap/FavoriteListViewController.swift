@@ -20,6 +20,8 @@ class FavoriteListViewController: UIViewController {
         return view
     }()
     
+    var editBarButtonItem: UIBarButtonItem = UIBarButtonItem()
+    
     //キャッシュ画像を保存するための変数
     var imageCache = NSCache<AnyObject, UIImage>()
     
@@ -43,12 +45,22 @@ class FavoriteListViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
         self.tableView.estimatedRowHeight = 120
+        
+        // 編集ボタン
+        self.editButtonItem.title = "編集"
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.title = "お気に入り一覧"
         self.loadData()
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        self.tableView.isEditing = editing
+        self.editButtonItem.title = editing ? "キャンセル" : "編集"
     }
     
     private func loadData() {
@@ -160,6 +172,10 @@ extension FavoriteListViewController: UITableViewDelegate, UITableViewDataSource
             vc.bookData = bookData
             _nav.pushViewController(vc, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print("uejo_edit")
     }
 }
 
