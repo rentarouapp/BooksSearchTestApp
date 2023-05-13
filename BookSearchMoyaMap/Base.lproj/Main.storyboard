@@ -437,6 +437,7 @@
                                         <connections>
                                             <outlet property="authorLabel" destination="guK-ob-i1d" id="ny3-6w-EA3"/>
                                             <outlet property="bookImageView" destination="xnn-nc-ZVM" id="Wtg-T1-NCd"/>
+                                            <outlet property="bookmarkImageView" destination="0WJ-Fe-f6n" id="sQF-mL-aFJ"/>
                                             <outlet property="titleLabel" destination="lre-Us-ZAg" id="RCs-1Y-0SM"/>
                                         </connections>
                                     </tableViewCell>

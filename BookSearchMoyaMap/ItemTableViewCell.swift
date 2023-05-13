@@ -13,6 +13,7 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var bookmarkImageView: UIImageView!
     
     var bookUrl: String?
     
@@ -29,6 +30,7 @@ class ItemTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         bookImageView.image = nil
+        bookmarkImageView.isHidden = true
     }
 
 }
