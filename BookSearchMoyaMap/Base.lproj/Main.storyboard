@@ -302,32 +302,43 @@
                                                         <constraint firstAttribute="width" constant="100" id="3sS-jg-w8o"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本のタイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNC-0e-qkW">
-                                                    <rect key="frame" x="118" y="10" width="247" height="50"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VD9-jf-PWv">
-                                                    <rect key="frame" x="118" y="60" width="247" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="67O-fl-235"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EGI-U9-9rm">
+                                                    <rect key="frame" x="118" y="10" width="249" height="100"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMY-1n-yhJ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="249" height="45"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本のタイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNC-0e-qkW">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="45"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Yqe-Aa-dvn">
+                                                                    <rect key="frame" x="204" y="0.0" width="45" height="45"/>
+                                                                    <color key="tintColor" systemColor="systemYellowColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="Yqe-Aa-dvn" secondAttribute="height" multiplier="1:1" id="1bT-2r-HY4"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VD9-jf-PWv">
+                                                            <rect key="frame" x="0.0" y="55" width="249" height="45"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="VD9-jf-PWv" firstAttribute="trailing" secondItem="NNC-0e-qkW" secondAttribute="trailing" id="AfN-Fj-Nbw"/>
-                                                <constraint firstItem="NNC-0e-qkW" firstAttribute="top" secondItem="vtK-2f-R1l" secondAttribute="top" id="HBw-jj-NgY"/>
+                                                <constraint firstItem="EGI-U9-9rm" firstAttribute="leading" secondItem="vtK-2f-R1l" secondAttribute="trailing" constant="8" id="8RR-u4-n53"/>
+                                                <constraint firstAttribute="trailing" secondItem="EGI-U9-9rm" secondAttribute="trailing" constant="8" id="Bt2-bx-XMi"/>
                                                 <constraint firstItem="vtK-2f-R1l" firstAttribute="leading" secondItem="Plv-XO-QD6" secondAttribute="leading" constant="10" id="Ju5-da-FIx"/>
                                                 <constraint firstItem="vtK-2f-R1l" firstAttribute="top" secondItem="Plv-XO-QD6" secondAttribute="top" constant="10" id="L9a-NM-kzm"/>
-                                                <constraint firstAttribute="trailing" secondItem="VD9-jf-PWv" secondAttribute="trailing" constant="10" id="Lg7-Sb-wOc"/>
-                                                <constraint firstItem="VD9-jf-PWv" firstAttribute="top" secondItem="NNC-0e-qkW" secondAttribute="bottom" id="S3O-WP-Gii"/>
-                                                <constraint firstItem="VD9-jf-PWv" firstAttribute="leading" secondItem="vtK-2f-R1l" secondAttribute="trailing" constant="8" id="lmS-2b-s96"/>
-                                                <constraint firstAttribute="bottom" secondItem="VD9-jf-PWv" secondAttribute="bottom" constant="10" id="mrF-T9-vlo"/>
-                                                <constraint firstItem="VD9-jf-PWv" firstAttribute="leading" secondItem="NNC-0e-qkW" secondAttribute="leading" id="s4Y-vu-xKw"/>
+                                                <constraint firstItem="EGI-U9-9rm" firstAttribute="top" secondItem="Plv-XO-QD6" secondAttribute="top" constant="10" id="a5b-rX-kMa"/>
+                                                <constraint firstAttribute="bottom" secondItem="EGI-U9-9rm" secondAttribute="bottom" constant="10" id="rFR-2d-65f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -370,52 +381,63 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="120" id="OEl-Vx-OOJ" customClass="ItemTableViewCell" customModule="BookSearchMoyaMap" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="120" id="Cfo-UL-Ufj" customClass="ItemTableViewCell" customModule="BookSearchMoyaMap" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OEl-Vx-OOJ" id="uKS-hX-D9f">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cfo-UL-Ufj" id="AOG-Mr-edF">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H0v-BY-sN4">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xnn-nc-ZVM">
                                                     <rect key="frame" x="10" y="10" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="aDb-22-9Fj"/>
-                                                        <constraint firstAttribute="height" constant="100" id="u93-uv-hG8"/>
+                                                        <constraint firstAttribute="height" constant="100" id="0i8-zX-QOL"/>
+                                                        <constraint firstAttribute="width" constant="100" id="NLe-BY-PYY"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本のタイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpg-dY-Die">
-                                                    <rect key="frame" x="118" y="10" width="247" height="50"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeQ-dB-fIW">
-                                                    <rect key="frame" x="118" y="60" width="247" height="50"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="BOg-OC-17s"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Ky-FN-eT8">
+                                                    <rect key="frame" x="118" y="10" width="249" height="100"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pei-Bd-j6B">
+                                                            <rect key="frame" x="0.0" y="0.0" width="249" height="45"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本のタイトル" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lre-Us-ZAg">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="204" height="45"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0WJ-Fe-f6n">
+                                                                    <rect key="frame" x="204" y="0.0" width="45" height="45"/>
+                                                                    <color key="tintColor" systemColor="systemYellowColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="0WJ-Fe-f6n" secondAttribute="height" multiplier="1:1" id="Fhz-kx-kM4"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guK-ob-i1d">
+                                                            <rect key="frame" x="0.0" y="55" width="249" height="45"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="HeQ-dB-fIW" secondAttribute="trailing" constant="10" id="5P6-Mi-THt"/>
-                                                <constraint firstItem="HeQ-dB-fIW" firstAttribute="trailing" secondItem="dpg-dY-Die" secondAttribute="trailing" id="929-wc-M0u"/>
-                                                <constraint firstItem="H0v-BY-sN4" firstAttribute="leading" secondItem="uKS-hX-D9f" secondAttribute="leading" constant="10" id="MI3-Wf-NX5"/>
-                                                <constraint firstAttribute="bottom" secondItem="HeQ-dB-fIW" secondAttribute="bottom" constant="10" id="Ng5-N9-gKB"/>
-                                                <constraint firstItem="HeQ-dB-fIW" firstAttribute="leading" secondItem="H0v-BY-sN4" secondAttribute="trailing" constant="8" id="QyU-QJ-aua"/>
-                                                <constraint firstItem="HeQ-dB-fIW" firstAttribute="top" secondItem="dpg-dY-Die" secondAttribute="bottom" id="fU4-Dr-5T4"/>
-                                                <constraint firstItem="H0v-BY-sN4" firstAttribute="top" secondItem="uKS-hX-D9f" secondAttribute="top" constant="10" id="klv-Fb-gbz"/>
-                                                <constraint firstItem="HeQ-dB-fIW" firstAttribute="leading" secondItem="dpg-dY-Die" secondAttribute="leading" id="pOG-W1-GOF"/>
-                                                <constraint firstItem="dpg-dY-Die" firstAttribute="top" secondItem="H0v-BY-sN4" secondAttribute="top" id="zbw-Uv-YHQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="2Ky-FN-eT8" secondAttribute="bottom" constant="10" id="PpH-Uf-15i"/>
+                                                <constraint firstAttribute="trailing" secondItem="2Ky-FN-eT8" secondAttribute="trailing" constant="8" id="Syc-0O-AOb"/>
+                                                <constraint firstItem="xnn-nc-ZVM" firstAttribute="top" secondItem="AOG-Mr-edF" secondAttribute="top" constant="10" id="eKV-ra-N1F"/>
+                                                <constraint firstItem="2Ky-FN-eT8" firstAttribute="top" secondItem="AOG-Mr-edF" secondAttribute="top" constant="10" id="phy-aI-Jnw"/>
+                                                <constraint firstItem="xnn-nc-ZVM" firstAttribute="leading" secondItem="AOG-Mr-edF" secondAttribute="leading" constant="10" id="sO7-El-P9J"/>
+                                                <constraint firstItem="2Ky-FN-eT8" firstAttribute="leading" secondItem="xnn-nc-ZVM" secondAttribute="trailing" constant="8" id="v3K-iY-q1q"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="authorLabel" destination="HeQ-dB-fIW" id="lNW-ZP-o5t"/>
-                                            <outlet property="bookImageView" destination="H0v-BY-sN4" id="ClX-zI-HRj"/>
-                                            <outlet property="titleLabel" destination="dpg-dY-Die" id="UOE-uz-Hs7"/>
+                                            <outlet property="authorLabel" destination="guK-ob-i1d" id="ny3-6w-EA3"/>
+                                            <outlet property="bookImageView" destination="xnn-nc-ZVM" id="Wtg-T1-NCd"/>
+                                            <outlet property="titleLabel" destination="lre-Us-ZAg" id="RCs-1Y-0SM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -741,6 +763,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark.fill" catalog="system" width="110" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="safari" catalog="system" width="128" height="123"/>
         <image name="star" catalog="system" width="128" height="116"/>
