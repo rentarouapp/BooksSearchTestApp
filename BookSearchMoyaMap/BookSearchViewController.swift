@@ -76,6 +76,11 @@ class BookSearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if #available(iOS 14.0, *) {
+            self.navigationItem.backButtonDisplayMode = .minimal
+        } else {
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
         self.navigationItem.title = "本を探す"
         self.tableView.reloadData()
         
