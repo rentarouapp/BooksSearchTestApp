@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import Moya
 import SnapKit
 
@@ -96,7 +97,7 @@ class BookSearchViewController: UIViewController {
     }
     
     // MARK: - Common
-    func resumeSearch(searchBar: UISearchBar, text: String?) {
+    private func resumeSearch(searchBar: UISearchBar, text: String?) {
         //現時点で保持している本のデータを一旦全て削除
         self.bookDataArray.removeAll()
         //入力文字の有無をチェック
@@ -112,7 +113,10 @@ class BookSearchViewController: UIViewController {
             }
             return
         }
-        
+        self.getBookDatas(inputText: inputText)
+    }
+    
+    private func getBookDatas(inputText: String) {
         let provider = MoyaProvider<GbaData>()
         IndicatorManager.show()
         let request = provider.request(.search(request: ["q":"\(inputText)", "maxResults":"12"])) { [weak self] result in
@@ -129,14 +133,38 @@ class BookSearchViewController: UIViewController {
                         self.bookDataArray.append(item)
                     }
                 }
+                self.emptyView.isHidden = !self.bookDataArray.isEmpty
+                self.emptyView.textLabel.text = self.emptyText
                 
             //通信が失敗したときの処理
             case let .failure(error):
-                print("アクセスに失敗しました:\(error)")
+                /* ネットワーク接続エラーのハンドリングを行う */
+                if let error = (error.errorUserInfo["NSUnderlyingError"] as? Alamofire.AFError)?.underlyingError as? NSError,
+                   error.domain == NSURLErrorDomain,
+                   error.code == NSURLErrorNotConnectedToInternet ||
+                    error.code == NSURLErrorTimedOut ||
+                    error.code == NSURLErrorNetworkConnectionLost {
+                    // ネットワーク接続エラーの場合
+                    self.emptyView.textLabel.text = "ネットワーク接続が\nありません"
+                    AlertManager.showAlertIn(self,
+                                             title: "ネットワーク接続がありません",
+                                             message: "「設定」からネットワーク接続を確認してください。",
+                                             cancelText: "閉じる",
+                                             doneText: "設定",
+                                             cancelCompletion: nil,
+                                             doneCompletion: {
+                        // Wifi設定に飛ばす
+                        if let url = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(url) {
+                           UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    })
+                } else {
+                    // その他のエラーの場合
+                    self.emptyView.textLabel.text = "API通信エラー"
+                    AlertManager.showErrorAlert(self, error: error)
+                }
+                self.emptyView.isHidden = false
             }
-            
-            self.emptyView.isHidden = !self.bookDataArray.isEmpty
-            self.emptyView.textLabel.text = self.emptyText
             
             DispatchQueue.main.async { [weak self] in
                 guard let `self` = self else { return }
