@@ -17,7 +17,6 @@ class BookSearchViewController: UIViewController {
     private var bookDataArray = [BookItem]()
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     private var isBookListAvailable: Bool {
         get {
@@ -37,6 +36,13 @@ class BookSearchViewController: UIViewController {
             return "本を探せるよ！"
         }
     }
+    
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.placeholder = "タイトルや著者名を入力してね"
+        return searchBar
+    }()
     
     private lazy var emptyView: EmptyView = {
         let view = EmptyView()
@@ -64,8 +70,12 @@ class BookSearchViewController: UIViewController {
         // 検索結果なしView
         self.view.addSubview(self.emptyView)
         self.emptyView.snp.makeConstraints { make in
-            make.top.equalTo(self.tableView).inset(self.searchBar.bounds.size.height)
+            //make.top.equalTo(self.tableView).inset(self.searchBar.bounds.size.height)
+            make.top.equalTo(self.tableView).inset(44)
             make.left.right.bottom.equalTo(self.tableView)
+        }
+        if #available(iOS 15.0, *) {
+            self.tableView.sectionHeaderTopPadding = 0.0
         }
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -82,6 +92,7 @@ class BookSearchViewController: UIViewController {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         self.navigationItem.title = "本を探す"
+        self.tableView.isScrollEnabled = self.emptyView.isHidden
         self.tableView.reloadData()
         
     }
@@ -114,6 +125,7 @@ class BookSearchViewController: UIViewController {
             self.emptyView.isHidden = false
             self.emptyView.textLabel.text = self.emptyText
             DispatchQueue.main.async {
+                self.tableView.isScrollEnabled = false
                 self.tableView.reloadData()
             }
             return
@@ -173,6 +185,7 @@ class BookSearchViewController: UIViewController {
             
             DispatchQueue.main.async { [weak self] in
                 guard let `self` = self else { return }
+                self.tableView.isScrollEnabled = self.emptyView.isHidden
                 self.tableView.reloadData()
             }
         }
@@ -188,6 +201,18 @@ extension BookSearchViewController: UITableViewDelegate, UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return self.searchBar
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
