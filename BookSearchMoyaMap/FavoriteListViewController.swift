@@ -175,7 +175,24 @@ extension FavoriteListViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("uejo_edit")
+        if let _bookId = self.favoriteBookDataArray[safe: indexPath.row]?.id, self.realmManager.isFavorite(id: _bookId) {
+            // お気に入り登録されていることを確認して削除
+            IndicatorManager.show()
+            self.realmManager.deleteBookData(id: _bookId, completion: { [weak self] error in
+                IndicatorManager.hide()
+                guard let `self` = self else { return }
+                if let _error = error {
+                    AlertManager.showErrorAlert(self, error: _error)
+                    return
+                }
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self else { return }
+                    self.favoriteBookDataArray.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    AlertManager.showAlertIn(self, title: "お気に入り削除", message: "お気に入りから削除しました！", cancelText: "閉じる", doneText: nil, cancelCompletion: nil, doneCompletion: nil)
+                }
+            })
+        }
     }
 }
 
