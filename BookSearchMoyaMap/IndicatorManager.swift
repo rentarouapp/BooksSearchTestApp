@@ -11,11 +11,11 @@ import PKHUD
 
 class IndicatorManager {
     
-    static func showIndicator() {
+    static func show() {
         HUD.show(.progress)
     }
     
-    static func completeIndicator() {
-        HUD.flash(.success, delay: 0.3)
+    static func hide() {
+        HUD.hide()
     }
 }

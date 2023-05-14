@@ -64,7 +64,7 @@ class FavoriteListViewController: UIViewController {
     }
     
     private func loadData() {
-        self.favoriteBookDataArray = self.realmManager.getRealmAllBookData()
+        self.favoriteBookDataArray = self.realmManager.getRealmAllBookData().reversed()
         if self.favoriteBookDataArray.isEmpty {
             self.emptyView.isHidden = false
             return

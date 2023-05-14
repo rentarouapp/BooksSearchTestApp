@@ -100,7 +100,9 @@ class BookDetailViewController: UIViewController {
         guard let _bookItem = self.bookData, let _bookId = self.bookData?.id else { return }
         if self.realmManager.isFavorite(id: _bookId) {
             // お気に入り登録されていたら削除
+            IndicatorManager.show()
             self.realmManager.deleteBookData(id: _bookId, completion: { [weak self] error in
+                IndicatorManager.hide()
                 guard let `self` = self else { return }
                 if let _error = error {
                     AlertManager.showErrorAlert(self, error: _error)
@@ -111,7 +113,9 @@ class BookDetailViewController: UIViewController {
             
         } else {
             // お気に入り登録されていなかったら登録
+            IndicatorManager.show()
             self.realmManager.writeBookData(bookItem: _bookItem, completion: { [weak self] error in
+                IndicatorManager.hide()
                 guard let `self` = self else { return }
                 if let _error = error {
                     AlertManager.showErrorAlert(self, error: _error)
